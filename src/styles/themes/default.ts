@@ -7,7 +7,7 @@ const defaultTheme = {
       main: "#FFFFFF"
     },
     back: {
-      main: "#000000"
+      main: "#000000",
     },
     gray: {
       100: "#EBEBF0",
@@ -18,7 +18,7 @@ const defaultTheme = {
       600: "#47474D",
       700: "#1B1B1F"
     },
-  }
+  },
 }
 
 export { defaultTheme }

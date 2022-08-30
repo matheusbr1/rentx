@@ -43,15 +43,27 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: 1080px) {
+  @media (max-width: 1366px) {
     html {
       font-size: 93.75%;
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1080px) {
     html {
       font-size: 87.5%;
+    }
+  }
+
+  @media (max-width: 720px) {
+    html {
+      font-size: 81.25%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    html {
+      font-size: 75%;
     }
   }
 `
