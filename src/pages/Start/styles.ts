@@ -18,12 +18,11 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   margin: 0 auto;
-  padding: ${pxToRem(48)};
+  padding: ${pxToRem(48)} ${pxToRem(64)};
 
   width: 100%;
-  height: 100%;
-
   max-width: 1440px;
+  height: 100%;
 
   display: flex;
   justify-content: space-around;
@@ -33,46 +32,48 @@ export const Content = styled.div`
 `
 
 export const LeftSide = styled.div`
-  margin-right: ${pxToRem(32)};
+  flex: 1;
 
-  img {
-    margin-bottom: ${pxToRem(128)};
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  h1 {
-    font-family: 'Archivo';
-    font-style: normal;
-    font-weight: 600;
-    font-size: ${pxToRem(54)};
-    line-height: ${pxToRem(54)};
+  div {
+    img {
+      margin-bottom: ${pxToRem(128)};
+    }
 
-    margin-bottom: ${pxToRem(32)};
-  }
+    h1 {
+      font-family: 'Archivo';
+      font-style: normal;
+      font-weight: 600;
+      font-size: ${pxToRem(54)};
+      line-height: ${pxToRem(54)};
 
-  h2 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: ${pxToRem(20)};
-    line-height: ${pxToRem(30)};
+      margin-bottom: ${pxToRem(32)};
+    }
 
-    margin-bottom: ${pxToRem(64)};
-  }
+    h2 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: ${pxToRem(20)};
+      line-height: ${pxToRem(30)};
 
-  button {
-    width:  ${pxToRem(292)};
-    height: ${pxToRem(80)};
-    background: ${props => props.theme.colors.red.main};
-    color: ${props => props.theme.colors.white.main};
-    font-style: normal;
-    font-weight: 500;
-    font-size: ${pxToRem(18)};
-    line-height: ${pxToRem(22)};
-    border: none;
-  }
+      margin-bottom: ${pxToRem(64)};
+    }
 
-  @media (max-width: 1024px) {
-    margin-right: unset;
+    button {
+      width:  ${pxToRem(292)};
+      height: ${pxToRem(80)};
+      background: ${props => props.theme.colors.red.main};
+      color: ${props => props.theme.colors.white.main};
+      font-style: normal;
+      font-weight: 500;
+      font-size: ${pxToRem(18)};
+      line-height: ${pxToRem(22)};
+      border: none;
+    }
   }
 `
 
@@ -85,12 +86,7 @@ export const RightSide = styled.div`
   img {
     margin: 0 auto;
     display: block;
-  }
-  
-  @media (max-width: 1240px) {
-    img {
-      max-width: 98%;
-    }
+    max-width: 100%;
   }
 
   @media (max-width: 1024px) {

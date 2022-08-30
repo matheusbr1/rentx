@@ -7,22 +7,24 @@ const Start: React.FC = () => {
     <Container>
       <Content>
         <LeftSide>
-          <img src='./assets/Logotipo.svg' />
-          
-          <h1>
-            Alugue um <br/>
-            carro de maneira <br/>
-            simples e fácil <br/>
-          </h1>
+          <div>
+            <img src='./assets/Logotipo.svg' />
+            
+            <h1>
+              Alugue um <br/>
+              carro de maneira <br/>
+              simples e fácil <br/>
+            </h1>
 
-          <h2>
-            Vários modelos para você dirigir <br/>
-            seguro, com conforto e segurança.
-          </h2>
+            <h2>
+              Vários modelos para você dirigir <br/>
+              seguro, com conforto e segurança.
+            </h2>
 
-          <button>
-            Começar agora
-          </button>
+            <button>
+              Começar agora
+            </button>
+          </div>
         </LeftSide>
 
         <RightSide>
