@@ -31,6 +31,7 @@ export const StyledButton = styled.button`
     left: -100%;
     right: 100%;
   }
+  
   :hover::after {
     left: 0;
     right: 0;
