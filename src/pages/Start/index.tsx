@@ -1,9 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from '../../components/Button';
 
 import * as S from './styles';
 
 const Start: React.FC = () => {
+  const navigation = useHistory()
+
   return (
     <S.Container>
       <S.Content>
@@ -22,7 +25,7 @@ const Start: React.FC = () => {
               seguro, com conforto e segurança.
             </h2>
 
-            <Button>
+            <Button onClick={() => navigation.push('/cars/list')} >
               Começar agora
             </Button>
           </div>
