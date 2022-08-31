@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { pxToRem } from "../../styles/utils/pxToRem";
 
-const logoSize = pxToRem(80)
+export const logoSize = pxToRem(80)
 const sideMenuItensHeight = `calc(99% - ${logoSize})`
 
 interface SideMenuItemProps {
