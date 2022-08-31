@@ -1,16 +1,15 @@
 import React from 'react';
 import { AppBar } from '../../../components/AppBar';
 import { Layout } from '../../../components/Layout';
-import * as S from './styles';
 
-const CarsList: React.FC = () => {
+const CarsFilter: React.FC = () => {
   return (
     <Layout
-      appBarComponent={<AppBar title='Início' />}
+      appBarComponent={<AppBar title='Filtrar Carros' />}
     >
-      <h1>List Works</h1>
+      <h1>Car Filter Works</h1>
     </Layout>
   )
 }
 
-export { CarsList };
+export { CarsFilter }

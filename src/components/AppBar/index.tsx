@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './styles'
 
-const isLogged = false
+const isLogged = true
 
-interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string
 }
 
