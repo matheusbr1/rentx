@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components'
-import Start from './pages/Start'
+import { Start } from './pages/Start'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 

@@ -6,7 +6,7 @@ const defaultTheme = {
     white: {
       main: "#FFFFFF"
     },
-    back: {
+    black: {
       main: "#000000",
     },
     gray: {

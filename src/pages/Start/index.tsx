@@ -1,12 +1,13 @@
 import React from 'react';
+import { Button } from '../../components/Button';
 
-import { Container, Content, LeftSide, RightSide } from './styles';
+import * as S from './styles';
 
 const Start: React.FC = () => {
   return (
-    <Container>
-      <Content>
-        <LeftSide>
+    <S.Container>
+      <S.Content>
+        <S.LeftSide>
           <div>
             <img src='./assets/Logotipo.svg' />
             
@@ -21,18 +22,18 @@ const Start: React.FC = () => {
               seguro, com conforto e segurança.
             </h2>
 
-            <button>
+            <Button>
               Começar agora
-            </button>
+            </Button>
           </div>
-        </LeftSide>
+        </S.LeftSide>
 
-        <RightSide>
+        <S.RightSide>
           <img src='./assets/AudiPaginaInicial.svg' />  
-        </RightSide>
-      </Content>
-    </Container>
+        </S.RightSide>
+      </S.Content>
+    </S.Container>
   )
 }
 
-export default Start;
+export { Start }

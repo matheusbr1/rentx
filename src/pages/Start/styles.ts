@@ -62,18 +62,6 @@ export const LeftSide = styled.div`
 
       margin-bottom: ${pxToRem(64)};
     }
-
-    button {
-      width:  ${pxToRem(292)};
-      height: ${pxToRem(80)};
-      background: ${props => props.theme.colors.red.main};
-      color: ${props => props.theme.colors.white.main};
-      font-style: normal;
-      font-weight: 500;
-      font-size: ${pxToRem(18)};
-      line-height: ${pxToRem(22)};
-      border: none;
-    }
   }
 `
 
