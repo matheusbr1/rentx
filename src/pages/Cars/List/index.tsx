@@ -1,12 +1,14 @@
 import React from 'react';
-
-import { Container } from './styles';
+import { SideMenu } from '../../../components/SideMenu';
+import * as S from './styles';
 
 const CarsList: React.FC = () => {
   return (
-    <Container>
-      CarsList Works
-    </Container>
+    <S.Container>
+      <SideMenu />
+
+      
+    </S.Container>
   )
 }
 
