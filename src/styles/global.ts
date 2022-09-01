@@ -35,6 +35,14 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
+  a {
+    text-decoration: none;
+
+    :visited {
+      color: inherit;
+    }
+  }
+
   button {
     cursor: pointer;
 

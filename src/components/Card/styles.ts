@@ -5,6 +5,17 @@ import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
 export const CardContainer = styled.div`
   padding: ${pxToRem(16)} ${pxToRem(16)};
+  width: 100%;
+  border: 2px solid;
+  border-color: transparent;
+  outline: none;
+  background: inherit;
+
+  transition: all 0.35s;
+
+  :hover {
+    border-color: ${props => props.theme.colors.red.main}
+  }
 `
 
 export const CardContent = styled.div`

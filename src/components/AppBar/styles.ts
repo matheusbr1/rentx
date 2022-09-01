@@ -10,7 +10,7 @@ export const AppBarContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: ${logoSize};
@@ -48,14 +48,6 @@ export const AppBarUserSession = styled.div`
     font-weight: 600;
     font-size: ${pxToRem(16)};
     line-height: ${pxToRem(26)}
-  }
-  
-  a {
-    text-decoration: none;
-
-    :visited {
-      color: inherit;
-    }
   }
 `
 

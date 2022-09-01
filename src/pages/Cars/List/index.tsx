@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AppBar } from '../../../components/AppBar';
 import Card from '../../../components/Card';
 import { Layout } from '../../../components/Layout';
@@ -28,12 +29,14 @@ const CarsList: React.FC = () => {
         <S.GridContainer>
           {cars.map((car: any) => (
             <S.GridItem>
-              <Card 
-                key={car.id}
-                brand='AUDI'
-                model='RS 5 Coupé'
-                price={640}
-              />
+              <Link to='/cars/detail' >
+                <Card 
+                  key={car.id}
+                  brand='AUDI'
+                  model='RS 5 Coupé'
+                  price={640}
+                />
+              </Link>
             </S.GridItem>
           ))}
         </S.GridContainer>
