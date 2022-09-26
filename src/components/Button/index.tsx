@@ -2,11 +2,26 @@ import React from 'react';
 
 import { StyledButton } from './styles';
 
-const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ 
-  children, ...rest 
+export type ButtonVariant = 'default' | 'success'
+export type WidthVariant = 'default' | 'full'
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant
+  width?: WidthVariant
+}
+
+const Button: React.FC<ButtonProps> = ({
+  variant = 'default',
+  width = 'default',
+  children, 
+  ...rest 
 }) => {
   return (
-    <StyledButton {...rest} >
+    <StyledButton 
+      variant={variant} 
+      width={width} 
+      {...rest} 
+    >
       {children}
     </StyledButton>
   )

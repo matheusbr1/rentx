@@ -37,8 +37,8 @@ export const CardFooter = styled.div`
     font-family: 'Archivo';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
-    line-height: 13px;
+    font-size: ${pxToRem(12)};
+    line-height: ${pxToRem(13)};
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: ${props => props.theme.colors.gray[400]};
@@ -48,8 +48,8 @@ export const CardFooter = styled.div`
     font-family: 'Archivo';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 22px;
+    font-size: ${pxToRem(20)};
+    line-height: ${pxToRem(22)};
   }
 
   h1 {

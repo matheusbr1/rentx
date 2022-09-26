@@ -8,6 +8,8 @@ export const SpecCardContainer = styled.div`
   gap: ${pxToRem(2)};
 
   border-bottom: solid 2px #EBEBF0;
+
+  min-width: ${pxToRem(200)};
 `
 
 export const SpecCardImage = styled.div`
@@ -21,6 +23,9 @@ export const SpecCardImage = styled.div`
 `
 
 export const SpecCardText = styled.div`
+  flex: 1;
+  width: max-content;
+
   display: flex;
   align-items: center;
 

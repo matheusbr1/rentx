@@ -9,7 +9,7 @@ interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Layout: React.FC<LayoutProps> = ({ appBarComponent = '', children, ...rest }) => (
-  <S.Container {...rest} >
+  <S.Container hasAppBar={!!appBarComponent} {...rest} >
     <SideMenu />
     
     {appBarComponent}

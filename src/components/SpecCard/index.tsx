@@ -9,7 +9,7 @@ interface SpecCardProps {
 
 const SpecCard: React.FC<SpecCardProps> = ({ text, image }) => {
   return (
-    <S.SpecCardContainer key={text} >
+    <S.SpecCardContainer>
       <S.SpecCardImage>
         <img src={image} alt={text} />
       </S.SpecCardImage>

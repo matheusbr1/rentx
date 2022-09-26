@@ -54,7 +54,7 @@ export const GridContainer = styled.div`
 `
 
 export const GridItem = styled.div`
-  background: #FFFFFF;
-  border: 1px solid #EBEBF0;
+  background: ${props => props.theme.colors.white.main};
+  border: 1px solid ${props => props.theme.colors.gray[100]};
 `
 

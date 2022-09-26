@@ -3,6 +3,9 @@ const defaultTheme = {
     red: {
       main: "#DC1637"
     },
+    green: {
+      main: "#03B352"
+    },
     white: {
       main: "#FFFFFF"
     },

@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { pxToRem } from "../../styles/utils/pxToRem";
 import { logoSize } from "../SideMenu/styles";
 
-interface ContentProps {
+interface Props {
   hasAppBar: boolean
 }
 
-export const Container = styled.div`
-  background: ${props => props.theme.colors.gray[100]};
+export const Container = styled.div<Props>`
+  background: ${props => props.hasAppBar 
+    ? props.theme.colors.gray[100] 
+    : 'transparent'
+  };
   
   min-height: 100vh;
   height: 100%;
@@ -18,7 +21,7 @@ export const Container = styled.div`
   justify-content: center;
 `
 
-export const Content = styled.main<ContentProps>`
+export const Content = styled.main<Props>`
   max-width: ${pxToRem(1128)};
   width: 100%;
   padding: ${pxToRem(16)};

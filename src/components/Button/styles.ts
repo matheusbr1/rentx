@@ -1,11 +1,27 @@
 import styled from "styled-components";
 import { pxToRem } from '../../styles/utils/pxToRem'
 import { lighten } from 'polished'
+import { ButtonVariant, WidthVariant } from ".";
 
-export const StyledButton = styled.button`
-  width:  ${pxToRem(292)};
+interface ButtonProps {
+  variant: ButtonVariant
+  width: WidthVariant
+}
+
+export const StyledButton = styled.button<ButtonProps>`
+  width: ${props => props.width === 'default' ? pxToRem(292) : '100%'};
+  
   height: ${pxToRem(80)};
-  background: ${props => props.theme.colors.red.main};
+  
+  background: ${props => {
+    const variants = {
+      default: props.theme.colors.red.main,
+      success: props.theme.colors.green.main,
+    }
+
+    return variants[props.variant]
+  }};
+
   color: ${props => props.theme.colors.white.main};
   font-style: normal;
   font-weight: 500;
@@ -19,7 +35,16 @@ export const StyledButton = styled.button`
 
   ::after {
     content: "";
-    background: ${props => lighten(0.2, props.theme.colors.red.main)};
+    
+    background: ${props => {
+      const variants = {
+        default: props.theme.colors.red.main,
+        success: props.theme.colors.green.main,
+      }
+
+      return lighten(0.2, variants[props.variant])
+    }};
+    
     position: absolute;
     z-index: -1;
     padding: 0.85em 0.75em;
