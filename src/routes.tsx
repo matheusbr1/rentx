@@ -4,6 +4,7 @@ import { Profile } from './pages/Account/Profile';
 import { CarDetail } from './pages/Cars/Detail';
 import { CarsFilter } from './pages/Cars/Filter';
 import { CarsList } from './pages/Cars/List';
+import { RentedCar } from './pages/Cars/Rented';
 import { Start } from './pages/Start';
 
 const Routes: React.FC = () => {
@@ -11,9 +12,12 @@ const Routes: React.FC = () => {
     <Router>
       <Switch>
         <Route exact path='/' component={Start} />
+        
         <Route path='/cars/list' component={CarsList} />
         <Route path='/cars/filter' component={CarsFilter} />
         <Route path='/cars/detail' component={CarDetail} />
+        <Route path='/cars/rented' component={RentedCar} />
+        
         <Route path='/account/profile' component={Profile} />
       </Switch>
     </Router>

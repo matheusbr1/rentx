@@ -5,7 +5,7 @@ import { pxToRem } from '../../styles/utils/pxToRem'
 export const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  background: ${props => props.theme.colors.gray[700]};
+  background: ${props => props.theme.colors.gray[800]};
 
   display: flex;
   justify-content: center;

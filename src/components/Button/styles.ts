@@ -42,7 +42,7 @@ export const StyledButton = styled.button<ButtonProps>`
         success: props.theme.colors.green.main,
       }
 
-      return lighten(0.2, variants[props.variant])
+      return lighten(0.075, variants[props.variant])
     }};
     
     position: absolute;

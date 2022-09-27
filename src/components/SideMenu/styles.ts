@@ -9,7 +9,7 @@ interface SideMenuItemProps {
 }
 
 export const SideMenuContainer = styled.div`
-  background: ${props => props.theme.colors.gray[700]};
+  background: ${props => props.theme.colors.gray[800]};
   position: fixed;
   height: 100vh;
   top: 0;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from 'better-react-carousel'
 import { Button } from '../../../components/Button'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Layout } from '../../../components/Layout';
 import { SpecCard } from '../../../components/SpecCard';
 
@@ -32,6 +32,8 @@ const Gallery = () => {
 }
 
 const CarDetail: React.FC = () => {
+
+  const history = useHistory()
 
   const specifications = [
     { img: '/assets/SpeedSpec.svg', text: '270km/h' },
@@ -75,7 +77,7 @@ const CarDetail: React.FC = () => {
             ))}
           </S.CarSpecCardWrapper>
 
-          <Button variant='success' width='full' >
+          <Button variant='success' width='full' onClick={() => history.push('rented')} >
             Alugar agora
           </Button>
         </S.CarDetailsWrapper>
