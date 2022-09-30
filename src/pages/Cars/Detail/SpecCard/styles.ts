@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { pxToRem } from "../../styles/utils/pxToRem";
+import { pxToRem } from "../../../../styles/utils/pxToRem";
 
 export const SpecCardContainer = styled.div`
   display: flex;
@@ -8,6 +8,7 @@ export const SpecCardContainer = styled.div`
   gap: ${pxToRem(2)};
 
   border-bottom: solid 2px #EBEBF0;
+  border-color: 
 
   min-width: ${pxToRem(200)};
 `
@@ -19,7 +20,7 @@ export const SpecCardImage = styled.div`
   height: 100%;
 
   background: #F4F5F6;
-  padding: ${pxToRem(16)};
+  padding: ${pxToRem(14)};
 `
 
 export const SpecCardText = styled.div`

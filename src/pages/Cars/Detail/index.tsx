@@ -1,48 +1,31 @@
 import React from 'react';
-import Carousel from 'better-react-carousel'
 import { Button } from '../../../components/Button'
 import { Link, useHistory } from 'react-router-dom';
 import { Layout } from '../../../components/Layout';
-import { SpecCard } from '../../../components/SpecCard';
+import { SpecCard } from './SpecCard';
+import { Carousel } from './Carousel';
 
 import * as S from './styles';
-
-const images = [
-  "/assets/carrousel/Audi.svg",
-  "/assets/carrousel/Audi.svg",
-  "/assets/carrousel/Audi.svg",
-]
-
-const Gallery = () => {
-  return (
-    <Carousel cols={1} rows={1} gap={10} loop >
-      {images.map(image => (
-        <Carousel.Item>
-          <div style={{ 
-              display: 'flex',
-              justifyContent: 'center'
-            }}  
-          >
-            <img width="90%" src={image} />
-          </div>
-        </Carousel.Item>
-      ))}
-    </Carousel>
-  )
-}
+import { Tabs } from './Tabs';
 
 const CarDetail: React.FC = () => {
-
   const history = useHistory()
 
-  const specifications = [
-    { img: '/assets/SpeedSpec.svg', text: '270km/h' },
-    { img: '/assets/SpeedSpec.svg', text: '6.8s' },
-    { img: '/assets/SpeedSpec.svg', text: 'Gasolina' },
-    { img: '/assets/SpeedSpec.svg', text: 'Auto' },
-    { img: '/assets/SpeedSpec.svg', text: '5 pessoas' },
-    { img: '/assets/SpeedSpec.svg', text: '280 HP' },
-  ]
+  const car = {
+    images: [
+      "/assets/carrousel/Audi.svg",
+      "/assets/carrousel/Audi.svg",
+      "/assets/carrousel/Audi.svg",
+    ],
+    specifications: [
+      { img: '/assets/SpeedSpec.svg', text: '270km/h' },
+      { img: '/assets/SpeedSpec.svg', text: '6.8s' },
+      { img: '/assets/SpeedSpec.svg', text: 'Gasolina' },
+      { img: '/assets/SpeedSpec.svg', text: 'Auto' },
+      { img: '/assets/SpeedSpec.svg', text: '5 pessoas' },
+      { img: '/assets/SpeedSpec.svg', text: '280 HP' },
+    ]
+  }
 
   return (
     <Layout>
@@ -63,12 +46,12 @@ const CarDetail: React.FC = () => {
 
       <S.CarDetailContent>
         <div>
-          <Gallery />
+          <Carousel images={car.images} />
         </div>
 
         <S.CarDetailsWrapper>
           <S.CarSpecCardWrapper>
-            {specifications.map(spec => (
+            {car.specifications.map(spec => (
               <SpecCard 
                 image={spec.img}
                 text={spec.text}
@@ -77,6 +60,8 @@ const CarDetail: React.FC = () => {
             ))}
           </S.CarSpecCardWrapper>
 
+          <Tabs />
+         
           <Button variant='success' width='full' onClick={() => history.push('rented')} >
             Alugar agora
           </Button>

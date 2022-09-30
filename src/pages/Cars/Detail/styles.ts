@@ -24,7 +24,6 @@ export const CarDetailHeader = styled.div`
 
     p {
       font-family: 'Archivo';
-      font-style: normal;
       font-weight: 500;
       font-size: ${pxToRem(14)};
       line-height: ${pxToRem(15)};
@@ -35,7 +34,6 @@ export const CarDetailHeader = styled.div`
 
     h1, h2 {
       font-family: 'Archivo';
-      font-style: normal;
       font-weight: 500;
       font-size: ${pxToRem(36)};
       line-height: ${pxToRem(39)};
