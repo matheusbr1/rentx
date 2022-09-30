@@ -16,7 +16,7 @@ const Info: React.FC<InfoProps> = ({ title, value }) => (
 
 const Tabs: React.FC = () => {
   return (
-    <S.Tabs defaultValue="description" >
+    <S.Tabs defaultValue="period" >
       <S.List>
         <S.Trigger value="description" >SOBRE O CARRO</S.Trigger>
         <S.Trigger value="period" >PERÍODO</S.Trigger>

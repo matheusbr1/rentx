@@ -66,7 +66,8 @@ export const CarDetailContent = styled.div`
   gap: ${pxToRem(32)};
 
   > div:first-child {
-    flex: 2
+    flex: 2;
+    margin-top: 10vh;
   }
 
   > div:last-child {

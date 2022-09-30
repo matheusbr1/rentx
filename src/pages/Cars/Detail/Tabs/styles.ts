@@ -43,7 +43,7 @@ export const Trigger = styled(TabsPrimitive.Trigger)`
 
 export const Content = styled(TabsPrimitive.Content)`
   padding: 1rem 0;
-  min-height: 180px;
+  min-height: 170px;
 
   .car_description {
     font-family: 'Inter';
