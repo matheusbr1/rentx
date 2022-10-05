@@ -5,34 +5,37 @@ export const SignInContent = styled.div`
   display: flex;
   width: 100%;
   gap: ${pxToRem(32)};
+`
 
-  > div:first-child {
-    flex: 2;
-    
-    display: flex;
-    max-height: 80vh;
-    
-    @media (max-width: 1200px) {
-      display: none;
-    }
+export const LeftSide = styled.div`
+  flex: 1;
+  
+  display: flex;
+  max-height: 80vh;
+  
+  img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
   }
 
-  > div:last-child {
-    flex: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  @media (max-width: 1024px) {
+    display: none;
   }
 `
 
-export const SignInFormWrapper = styled.div`
-  form  {
-    display: flex;
-    flex-direction: column;
-    gap: ${pxToRem(16)}
-  }
+export const RightSide = styled.div`
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const SignInForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: ${pxToRem(16)};
 
   h1 {
     font-family: 'Archivo';

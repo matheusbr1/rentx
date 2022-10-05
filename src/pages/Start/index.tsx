@@ -11,7 +11,7 @@ const Start: React.FC = () => {
     <S.Container>
       <S.Content>
         <S.LeftSide>
-          <div>
+          <S.LeftSideContentWrapper>
             <img src='./assets/Logotipo.svg' />
             
             <h1>
@@ -28,7 +28,7 @@ const Start: React.FC = () => {
             <Button onClick={() => navigation.push('/cars/list')} >
               Começar agora
             </Button>
-          </div>
+          </S.LeftSideContentWrapper>
         </S.LeftSide>
 
         <S.RightSide>

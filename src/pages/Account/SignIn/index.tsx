@@ -12,12 +12,12 @@ const SignIn: React.FC = () => {
       appBarComponent={<AppBar title='Perfil' />}
     >
       <S.SignInContent>
-        <div>
+        <S.LeftSide>
           <img src="/assets/AudiSignInBg.svg" alt="Carro Audi" />
-        </div>
+        </S.LeftSide>
 
-        <S.SignInFormWrapper>
-          <form action="">
+        <S.RightSide>
+          <S.SignInForm action="">
             <h1>Estamos quase lá.</h1>
 
             <p>Faça seu login para começar uma <br /> experiência incrível.</p>
@@ -41,8 +41,8 @@ const SignIn: React.FC = () => {
             <Button width='full' variant='secondary' >
               Criar conta gratuita
             </Button>
-          </form>
-        </S.SignInFormWrapper>
+          </S.SignInForm>
+        </S.RightSide>
       </S.SignInContent>
     </Layout>
   )
