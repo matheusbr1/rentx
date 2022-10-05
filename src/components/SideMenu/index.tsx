@@ -6,7 +6,7 @@ import * as S from './styles';
 const menuItems = [
   { imageName: 'Home', link: '/cars/list' },
   { imageName: 'Carros', link: '/cars/filter' },
-  { imageName: 'Perfil', link: '/account/profile' },
+  { imageName: 'Perfil', link: '/account/signIn' },
 ]
 
 const SideMenu: React.FC = () => {

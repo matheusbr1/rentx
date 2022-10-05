@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Profile } from './pages/Account/Profile';
+import { SignIn } from './pages/Account/SignIn';
 import { CarDetail } from './pages/Cars/Detail';
 import { CarsFilter } from './pages/Cars/Filter';
 import { CarsList } from './pages/Cars/List';
@@ -19,6 +20,7 @@ const Routes: React.FC = () => {
         <Route path='/cars/rented' component={RentedCar} />
         
         <Route path='/account/profile' component={Profile} />
+        <Route path='/account/signin' component={SignIn} />
       </Switch>
     </Router>
   )

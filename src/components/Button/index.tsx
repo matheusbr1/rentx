@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyledButton } from './styles';
 
-export type ButtonVariant = 'default' | 'success'
+export type ButtonVariant = 'primary' | 'secondary' | 'success'
 export type WidthVariant = 'default' | 'full'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({
-  variant = 'default',
+  variant = 'primary',
   width = 'default',
   children, 
   ...rest 
