@@ -23,7 +23,15 @@ export const StyledButton = styled.button<ButtonProps>`
     return variants[props.variant]
   }};
 
-  color: ${props => props.variant === 'primary' ? props.theme.colors.white.main : '#47474D'};
+  color: ${props => {
+    const variants = {
+      primary: props.theme.colors.white.main,
+      secondary: '#47474D',
+      success: props.theme.colors.white.main,
+    }
+
+    return variants[props.variant]
+  }};
 
   border: 2px solid;
   border-color: ${props => props.variant === 'primary' ? 'transparent' : '#DEDEE3'};

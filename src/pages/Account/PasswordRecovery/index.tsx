@@ -7,7 +7,7 @@ import { TextField } from '../../../components/TextField';
 
 import * as S from './styles'
 
-const SignIn: React.FC = () => {
+const PasswordRecovery: React.FC = () => {
   return (
     <Layout
       appBarComponent={<AppBar title='Perfil' />}
@@ -19,32 +19,21 @@ const SignIn: React.FC = () => {
 
         <S.RightSide>
           <S.Form action="">
-            <h1>Estamos quase lá.</h1>
+            <h1>Recuperar Senha</h1>
 
-            <p>Faça seu login para começar uma <br /> experiência incrível.</p>
+            <p>Insira seu e-mail para receber um <br /> link de recuperação</p>
 
             <TextField 
               placeholder='E-mail' 
               icon='email' 
-              type='email'
             />
 
-            <TextField 
-              placeholder='Senha' 
-              icon='password' 
-              type='password' 
-            />
-
-            <Link to='/account/password-recovery' >
-              Esqueci minha senha
+            <Link to='/account/signin' >
+              Voltar para a página de login
             </Link>
 
             <Button width='full' >
-              Login
-            </Button>
-
-            <Button width='full' variant='secondary' >
-              Criar conta gratuita
+              Enviar
             </Button>
           </S.Form>
         </S.RightSide>
@@ -53,4 +42,4 @@ const SignIn: React.FC = () => {
   )
 }
 
-export { SignIn }
+export { PasswordRecovery }

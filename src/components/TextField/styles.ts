@@ -7,6 +7,13 @@ interface Props {
 
 export const FieldWrapper = styled.div`
   width: 100%;
+  min-width: 400px;
+  max-width: 100%;
+
+  @media(max-width: 720px) {
+    min-width: unset;
+  }
+
   background-color: #fff;
 
   display: flex;
