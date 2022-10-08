@@ -4,7 +4,7 @@ import { pxToRem } from "../../styles/utils/pxToRem";
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
 export const CardContainer = styled.div`
-  padding: ${pxToRem(16)} ${pxToRem(16)};
+  padding: ${pxToRem(16)};
   width: 100%;
   border: 2px solid;
   border-color: transparent;

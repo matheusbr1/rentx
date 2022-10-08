@@ -6,7 +6,7 @@ type InputAttributes = InputHTMLAttributes<HTMLInputElement>
 
 type Icon = 'email' | 'password'
 
-interface TextFieldProps extends InputAttributes {
+export interface TextFieldProps extends InputAttributes {
   icon?: Icon
   helperText?: string
   isErrored?: boolean

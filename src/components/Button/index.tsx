@@ -5,7 +5,7 @@ import { StyledButton } from './styles';
 export type ButtonVariant = 'primary' | 'secondary' | 'success'
 export type WidthVariant = 'default' | 'full'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   width?: WidthVariant
 }

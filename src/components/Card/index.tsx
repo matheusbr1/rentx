@@ -2,15 +2,15 @@ import React from 'react';
 
 import * as S from './styles';
 
-interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   brand: string
   model: string
   price: number
 }
 
-const Card: React.FC<CardProps> = ({ brand, model, price }) => {
+const Card: React.FC<CardProps> = ({ brand, model, price, ...rest }) => {
   return (
-    <S.CardContainer>
+    <S.CardContainer {...rest} >
       <S.CardContent>
         <img src="/assets/Audi.svg" alt="Audi" />
       </S.CardContent>
@@ -27,4 +27,4 @@ const Card: React.FC<CardProps> = ({ brand, model, price }) => {
   )
 }
 
-export default Card;
+export { Card }
