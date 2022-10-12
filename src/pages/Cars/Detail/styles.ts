@@ -20,7 +20,7 @@ export const CarDetailHeader = styled.div`
   div {
     display: grid;
     grid-template-columns: auto auto;
-    gap: ${pxToRem(8)};
+    gap: ${pxToRem(8)} ${pxToRem(32)};
 
     p {
       font-family: 'Archivo';

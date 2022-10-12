@@ -7,8 +7,7 @@ export const SpecCardContainer = styled.div`
   align-items: center;
   gap: ${pxToRem(2)};
 
-  border-bottom: solid 2px #EBEBF0;
-  border-color: 
+  border-bottom: solid 2px ${props => props.theme.colors.gray[100]};
 
   min-width: ${pxToRem(200)};
 `
@@ -19,7 +18,7 @@ export const SpecCardImage = styled.div`
 
   height: 100%;
 
-  background: #F4F5F6;
+  background: ${props => props.theme.colors.gray[50]};
   padding: ${pxToRem(14)};
 `
 
@@ -32,15 +31,15 @@ export const SpecCardText = styled.div`
 
   height: 100%;
 
-  background: #F4F5F6;
+  background: ${props => props.theme.colors.gray[50]};
   padding: ${pxToRem(16)};
   
   p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
-    color: #7A7A80;
+    font-size: ${pxToRem(18)};
+    line-height: ${pxToRem(22)};
+    color: ${props => props.theme.colors.gray[500]};
   }
 `

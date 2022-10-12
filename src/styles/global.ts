@@ -50,28 +50,39 @@ export const GlobalStyle = createGlobalStyle`
       cursor: not-allowed;
     }
   }
-
-  @media (max-width: 1366px) {
+  
+  // 15px
+  @media (max-width: 2000px) {
     html {
       font-size: 93.75%;
     }
   }
 
-  @media (max-width: 1080px) {
+  // 14px
+  @media (max-width: 1366px) {
     html {
       font-size: 87.5%;
     }
   }
 
-  @media (max-width: 720px) {
+  // 13px
+  @media (max-width: 1080px) {
     html {
       font-size: 81.25%;
     }
   }
 
-  @media (max-width: 600px) {
+  // 12px
+  @media (max-width: 720px) {
     html {
       font-size: 75%;
+    }
+  }
+
+  // 11px
+  @media (max-width: 600px) {
+    html {
+      font-size: 68.75%;
     }
   }
 `

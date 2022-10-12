@@ -13,6 +13,7 @@ const defaultTheme = {
       main: "#000000",
     },
     gray: {
+      50: "#F4F5F6",
       100: "#EBEBF0",
       200: "#E5E5E5",
       300: "#DEDEE3",

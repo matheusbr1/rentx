@@ -16,35 +16,35 @@ const Info: React.FC<InfoProps> = ({ title, value }) => (
 
 const Tabs: React.FC = () => {
   return (
-    <S.Tabs defaultValue="period" >
+    <S.Tabs defaultValue="tab-1" >
       <S.List>
-        <S.Trigger value="description" >SOBRE O CARRO</S.Trigger>
-        <S.Trigger value="period" >PERÍODO</S.Trigger>
+        <S.Trigger value="tab-1" >SOBRE O CARRO</S.Trigger>
+        <S.Trigger value="tab-2" >PERÍODO</S.Trigger>
       </S.List>
 
-      <S.Content value="description" >
+      <S.Content value="tab-1" >
         <p className="car_description" >
           Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
         </p>
       </S.Content>
 
-      <S.Content value="period" >
-        <div className="period_data_row" >
+      <S.Content value="tab-2" >
+        <S.PeriodDataRow>
           <Info title="De" value='18 Jul 2021' />
           <Info title="Até" value='20 Jul 2021' />
 
           <S.CalendarButton>
             <img src="/assets/calendar.svg" alt="Calendário" />
           </S.CalendarButton>
-        </div>
+        </S.PeriodDataRow>
         
         <S.Separator />
 
-        <div className="period_data_row" >
+        <S.PeriodDataRow>
           <Info title="Total" value='R$ 580 x3 diárias' />
 
           <p className="total_amount" >R$ 2,900</p>
-        </div>
+        </S.PeriodDataRow>
       </S.Content>
     </S.Tabs>
   )

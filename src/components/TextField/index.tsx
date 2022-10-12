@@ -24,11 +24,11 @@ const TextField: React.FC<TextFieldProps> = ({ icon, helperText, isErrored, ...p
           </S.FieldStartIconBox>
         )}
         
-        <S.Field {...props} type={type} />
+        <S.Field {...props} type={type} tabIndex={1} />
 
         {props.type === 'password' && (
           <S.FieldEndIconBox>
-            <button 
+            <button
               onClick={() => setType(type === 'password'  ? 'text' : 'password')} 
             >
               <img src='/assets/icons/passwordVisibility.svg' />

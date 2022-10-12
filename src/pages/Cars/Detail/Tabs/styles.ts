@@ -62,13 +62,13 @@ export const Content = styled(TabsPrimitive.Content)`
     line-height: ${pxToRem(39)};
     color: ${props => props.theme.colors.green.main};
   }
-  
-  .period_data_row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: ${pxToRem(8)} 0;
-  }
+`
+
+export const PeriodDataRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: ${pxToRem(8)} 0;
 `
 
 export const Info = styled.div`

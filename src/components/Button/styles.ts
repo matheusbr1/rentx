@@ -16,7 +16,7 @@ export const StyledButton = styled.button<ButtonProps>`
   background: ${props => {
     const variants = {
       primary: props.theme.colors.red.main,
-      secondary: '#F4F5F6',
+      secondary: props.theme.colors.gray[50],
       success: props.theme.colors.green.main,
     }
 
@@ -26,7 +26,7 @@ export const StyledButton = styled.button<ButtonProps>`
   color: ${props => {
     const variants = {
       primary: props.theme.colors.white.main,
-      secondary: '#47474D',
+      secondary: props.theme.colors.gray[600],
       success: props.theme.colors.white.main,
     }
 
@@ -34,7 +34,10 @@ export const StyledButton = styled.button<ButtonProps>`
   }};
 
   border: 2px solid;
-  border-color: ${props => props.variant === 'primary' ? 'transparent' : '#DEDEE3'};
+  border-color: ${props => props.variant === 'primary' 
+    ? 'transparent' 
+    : props.theme.colors.gray[300]
+  };
   
   font-style: normal;
   font-weight: 500;
@@ -51,7 +54,7 @@ export const StyledButton = styled.button<ButtonProps>`
     background: ${props => {
       const variants = {
         primary: props.theme.colors.red.main,
-        secondary: '#F4F5F6',
+        secondary: props.theme.colors.gray[50],
         success: props.theme.colors.green.main,
       }
 

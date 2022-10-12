@@ -4,6 +4,7 @@ import { pxToRem } from "../../../styles/utils/pxToRem"
 export const Content = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   gap: ${pxToRem(32)};
 `
 
@@ -11,7 +12,6 @@ export const LeftSide = styled.div`
   flex: 1;
   
   display: flex;
-  max-height: 80vh;
   
   img {
     margin: 0 auto;
