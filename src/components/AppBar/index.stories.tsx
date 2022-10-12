@@ -1,20 +1,16 @@
-import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from '../../styles/themes/default'
-import { GlobalStyle } from '../../styles/global'
 import { AppBar, AppBarProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
 
 export default {
   title: 'Components/AppBar',
   component: AppBar,
-  decorators: [
-    Story => (
-      <ThemeProvider theme={defaultTheme}>
-        {Story()}
-        <GlobalStyle />
-      </ThemeProvider>
-    )
-  ]
+  argTypes: {
+    style: {
+      control: {
+        type: null
+      }
+    }
+  }
 } as Meta
 
 export const Default: StoryObj<AppBarProps> = {
