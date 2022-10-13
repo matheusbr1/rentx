@@ -2,7 +2,7 @@ import { AppBar, AppBarProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
 
 export default {
-  title: 'Components/AppBar',
+  title: 'Components/Common/AppBar',
   component: AppBar,
   argTypes: {
     style: {

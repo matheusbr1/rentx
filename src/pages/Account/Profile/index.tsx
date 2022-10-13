@@ -8,7 +8,7 @@ import { Avatar } from './Avatar';
 import { Tabs } from './Tabs';
 import { AppointmentCard } from './AppointmentCard';
 
-const item = {
+export const appointment = {
   id: "666e65d6-5604-4ad9-a5ec-277246036a1e",
   start_date: "2022-05-21T00:29:00.949Z",
   end_date: "2022-05-23T00:29:36.981Z",
@@ -21,7 +21,7 @@ const item = {
   }
 }
 
-export type Appointment = typeof item
+export type Appointment = typeof appointment
 
 const Profile: React.FC = () => {
   const appointments = useMemo(() => {
@@ -29,8 +29,8 @@ const Profile: React.FC = () => {
     
     for (let i=0; i<20; i++) {
       array.push({
-        ...item,
-        id: item.id + i
+        ...appointment,
+        id: appointment.id + i
       })
     }
 
@@ -45,7 +45,7 @@ const Profile: React.FC = () => {
         <S.LeftSide>
           <S.ProfileEdition>
             <Avatar 
-              imageSource='https://lh3.googleusercontent.com/a/ALm5wu2F4e66k4Am3qQkT4hB3MPApOs8neetrTJChf8T04k=s288-p-rw-no'
+              imageSource='hhttps://lh3.googleusercontent.com/a/ALm5wu2F4e66k4Am3qQkT4hB3MPApOs8neetrTJChf8T04k=s288-p-rw-no'
               name='Nome'
             />
 

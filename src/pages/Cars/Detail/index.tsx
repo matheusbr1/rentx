@@ -8,24 +8,24 @@ import { Carousel } from './Carousel';
 import * as S from './styles';
 import { Tabs } from './Tabs';
 
+export const car = {
+  images: [
+    "/assets/carrousel/Audi.svg",
+    "/assets/carrousel/Audi.svg",
+    "/assets/carrousel/Audi.svg",
+  ],
+  specifications: [
+    { img: '/assets/SpeedSpec.svg', text: '270km/h' },
+    { img: '/assets/SpeedSpec.svg', text: '6.8s' },
+    { img: '/assets/SpeedSpec.svg', text: 'Gasolina' },
+    { img: '/assets/SpeedSpec.svg', text: 'Auto' },
+    { img: '/assets/SpeedSpec.svg', text: '5 pessoas' },
+    { img: '/assets/SpeedSpec.svg', text: '280 HP' },
+  ]
+}
+
 const CarDetail: React.FC = () => {
   const history = useHistory()
-
-  const car = {
-    images: [
-      "/assets/carrousel/Audi.svg",
-      "/assets/carrousel/Audi.svg",
-      "/assets/carrousel/Audi.svg",
-    ],
-    specifications: [
-      { img: '/assets/SpeedSpec.svg', text: '270km/h' },
-      { img: '/assets/SpeedSpec.svg', text: '6.8s' },
-      { img: '/assets/SpeedSpec.svg', text: 'Gasolina' },
-      { img: '/assets/SpeedSpec.svg', text: 'Auto' },
-      { img: '/assets/SpeedSpec.svg', text: '5 pessoas' },
-      { img: '/assets/SpeedSpec.svg', text: '280 HP' },
-    ]
-  }
 
   return (
     <Layout>

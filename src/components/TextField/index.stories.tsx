@@ -2,7 +2,7 @@ import { TextField, TextFieldProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
 
 export default {
-  title: 'Components/TextField',
+  title: 'Components/Common/TextField',
   component: TextField,
   decorators: [
     Story => (

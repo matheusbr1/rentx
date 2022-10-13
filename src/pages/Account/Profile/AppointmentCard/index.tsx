@@ -3,7 +3,7 @@ import { Appointment } from '..';
 
 import * as S from './styles';
 
-interface AppointmentCardProps {
+export interface AppointmentCardProps {
   appointment: Appointment
 }
 

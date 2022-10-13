@@ -23,7 +23,7 @@ const CarouselDot = styled.span<StylesCarouselDotProps>`
   };
 `
 
-interface CarouselProps {
+export interface CarouselProps {
   images: string[]
 }
 

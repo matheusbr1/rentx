@@ -26,8 +26,8 @@ export const Fallback = styled(AvatarPrimitive.Fallback)`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  color: ${props => props.theme.colors.gray[400]};
+  background-color: ${props => props.theme.colors.gray[300]};
+  color: ${props => props.theme.colors.gray[800]};
   line-height: 1;
   font-weight: 500;
   border-radius: 100%;

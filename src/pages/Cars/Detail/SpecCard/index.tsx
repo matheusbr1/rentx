@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './styles';
 
-interface SpecCardProps {
+export interface SpecCardProps {
   text: string
   image: string
 }

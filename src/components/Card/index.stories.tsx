@@ -2,7 +2,7 @@ import { Card, CardProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
 
 export default {
-  title: 'Components/Card',
+  title: 'Components/Common/Card',
   component: Card,
   decorators: [
     Story => (
