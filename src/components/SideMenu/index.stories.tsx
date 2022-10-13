@@ -1,9 +1,25 @@
-import { SideMenu } from '.'
+import { SideMenu, SideMenuProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 export default {
   title: 'Components/SideMenu',
   component: SideMenu,
-} as Meta
+  args: { pathname: '/account' },
+  parameters: {
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true,
+      },
+    },
+  },
+  decorators: [
+    (storyFn) => (
+      <Router>
+        {storyFn()}
+      </Router>
+    )
+  ]
+} as Meta<SideMenuProps>
 
-export const Default: StoryObj = {}
+export const Default: StoryObj<SideMenuProps> = {}

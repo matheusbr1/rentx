@@ -36,6 +36,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${pxToRem(16)};
+  width: 80%;
 
   h1 {
     font-family: 'Archivo';

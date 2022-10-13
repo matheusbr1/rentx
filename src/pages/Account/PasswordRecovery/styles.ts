@@ -10,7 +10,6 @@ export const Content = styled.div`
 
 export const LeftSide = styled.div`
   flex: 1;
-  
   display: flex;
   
   img {
@@ -26,7 +25,6 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   flex: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +34,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${pxToRem(16)};
+  width: 80%;
 
   h1 {
     font-family: 'Archivo';
