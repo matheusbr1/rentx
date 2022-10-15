@@ -14,7 +14,11 @@ const Info: React.FC<InfoProps> = ({ title, value }) => (
   </S.Info>
 )
 
-const Tabs: React.FC = () => {
+interface TabsProps {
+  onOpenCalendar: () => void
+}
+
+const Tabs: React.FC<TabsProps> = ({ onOpenCalendar }) => {
   return (
     <S.Tabs defaultValue="tab-1" >
       <S.List>
@@ -33,7 +37,7 @@ const Tabs: React.FC = () => {
           <Info title="De" value='18 Jul 2021' />
           <Info title="Até" value='20 Jul 2021' />
 
-          <S.CalendarButton>
+          <S.CalendarButton onClick={onOpenCalendar} >
             <img src="/assets/calendar.svg" alt="Calendário" />
           </S.CalendarButton>
         </S.PeriodDataRow>

@@ -1,7 +1,9 @@
 const defaultTheme = {
   colors: {
     red: {
-      main: "#DC1637"
+      100: '#FDEDEF',
+      main: "#DC1637",
+      700: '#DC163733'
     },
     green: {
       main: "#03B352"

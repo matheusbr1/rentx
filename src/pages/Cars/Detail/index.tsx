@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../../components/Button'
 import { Link, useHistory } from 'react-router-dom';
 import { Layout } from '../../../components/Layout';
@@ -7,6 +7,7 @@ import { Carousel } from './Carousel';
 
 import * as S from './styles';
 import { Tabs } from './Tabs';
+import { Modal } from './Modal';
 
 export const car = {
   images: [
@@ -26,6 +27,9 @@ export const car = {
 
 const CarDetail: React.FC = () => {
   const history = useHistory()
+
+  const [isPeriodSelected, setIsPeriodSelected] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <Layout>
@@ -60,11 +64,23 @@ const CarDetail: React.FC = () => {
             ))}
           </S.CarSpecCardWrapper>
 
-          <Tabs />
-         
-          <Button variant='success' width='full' onClick={() => history.push('rented')} >
-            Alugar agora
-          </Button>
+          <Tabs onOpenCalendar={() => setIsModalOpen(true)} />
+
+          {isPeriodSelected ? (
+            <Button variant='success' width='full' onClick={() => history.push('rented')} >
+              Alugar agora
+            </Button>
+          ) : (
+            <Button width='full' onClick={() => setIsModalOpen(true)} >
+              Escolher período do aluguel
+            </Button>
+          )}
+          
+          <Modal 
+            open={isModalOpen}
+            setIsOpen={setIsModalOpen} 
+            onConfirm={() => setIsPeriodSelected(true)} 
+          />
         </S.CarDetailsWrapper>
       </S.CarDetailContent>
     </Layout>
