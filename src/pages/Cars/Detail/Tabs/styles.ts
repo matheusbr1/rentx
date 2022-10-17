@@ -2,7 +2,7 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 import styled from 'styled-components'
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { pxToRem } from '../../../../styles/utils/pxToRem';
-import { lighten } from 'polished';
+import { darken } from 'polished';
 
 export const Tabs = styled(TabsPrimitive.Root)`
   display: flex;
@@ -101,7 +101,7 @@ export const CalendarButton = styled.button`
   transition: 0.2s;
 
   :hover {
-    background: ${props => lighten(0.075, props.theme.colors.red.main)}
+    background: ${props => darken(0.075, props.theme.colors.red.main)}
   }
 `
 

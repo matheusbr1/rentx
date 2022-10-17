@@ -25,7 +25,10 @@ const Start: React.FC = () => {
               seguro, com conforto e segurança.
             </h2>
 
-            <Button onClick={() => navigation.push('/cars/list')} >
+            <Button 
+              onClick={() => navigation.push('/cars/list')} 
+              hover='with-effect'
+            >
               Começar agora
             </Button>
           </S.LeftSideContentWrapper>

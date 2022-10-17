@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
   outline: none;
   background: inherit;
 
-  transition: all 0.35s;
+  transition: all 0.4s;
 
   :hover {
     border-color: ${props => props.theme.colors.red.main}

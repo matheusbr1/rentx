@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { pxToRem } from "../../../styles/utils/pxToRem";
-import { lighten } from 'polished'
+import { darken } from 'polished'
 
 export const Container = styled.div`
   background: ${(props) => props.theme.colors.gray[800]};
@@ -44,6 +44,7 @@ export const Content = styled.div`
     color: ${props => props.theme.colors.gray[400]};
   }
 `
+
 export const ConfirmationButton = styled.button`
   width: ${pxToRem(120)};
   height: ${pxToRem(64)};
@@ -55,33 +56,11 @@ export const ConfirmationButton = styled.button`
   font-weight: 500;
   font-size: ${pxToRem(16)};
   line-height: ${pxToRem(19)};
+  transition: all 0.4s;
 
-  position: relative;
   z-index: 1;
-  overflow: hidden;
 
-  ::after {
-    content: "";
-    
-    background: ${props => lighten(0.2, props.theme.colors.gray[700])};
-    
-    position: absolute;
-    z-index: -1;
-    padding: 0.85em 0.75em;
-    display: block;
-    transition: all 0.35s;
-
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    right: 100%;
-  }
-  
-  :hover::after {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    transition: all 0.35s;
+  :hover {
+    background: ${props => darken(0.15, props.theme.colors.gray[700])};
   }
 `

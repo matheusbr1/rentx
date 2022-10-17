@@ -1,37 +1,36 @@
 import styled from "styled-components";
 import { pxToRem } from '../../styles/utils/pxToRem'
-import { lighten } from 'polished'
-import { ButtonVariant, WidthVariant } from ".";
+import { lighten, darken } from 'polished'
+import { defaultTheme } from '../../styles/themes/default'
+import { ButtonVariant, HoverVariant, WidthVariant } from ".";
 
 interface ButtonProps {
   variant: ButtonVariant
   width: WidthVariant
+  hover: HoverVariant
+}
+
+const variants = {
+  primary: {
+    bg: defaultTheme.colors.red.main,
+    color: defaultTheme.colors.white.main
+  },
+  secondary: {
+    bg: defaultTheme.colors.gray[50],
+    color: defaultTheme.colors.gray[600]
+  },
+  success: {
+    bg: defaultTheme.colors.green.main,
+    color: defaultTheme.colors.white.main,
+  }
 }
 
 export const StyledButton = styled.button<ButtonProps>`
   width: ${props => props.width === 'default' ? pxToRem(292) : '100%'};
-  
   height: ${pxToRem(80)};
   
-  background: ${props => {
-    const variants = {
-      primary: props.theme.colors.red.main,
-      secondary: props.theme.colors.gray[50],
-      success: props.theme.colors.green.main,
-    }
-
-    return variants[props.variant]
-  }};
-
-  color: ${props => {
-    const variants = {
-      primary: props.theme.colors.white.main,
-      secondary: props.theme.colors.gray[600],
-      success: props.theme.colors.white.main,
-    }
-
-    return variants[props.variant]
-  }};
+  background: ${props => variants[props.variant].bg};
+  color: ${props => variants[props.variant].color};
 
   border: 2px solid;
   border-color: ${props => props.variant === 'primary' 
@@ -51,33 +50,38 @@ export const StyledButton = styled.button<ButtonProps>`
   ::after {
     content: "";
     
-    background: ${props => {
-      const variants = {
-        primary: props.theme.colors.red.main,
-        secondary: props.theme.colors.gray[50],
-        success: props.theme.colors.green.main,
-      }
-
-      return lighten(0.075, variants[props.variant])
-    }};
+    background: ${props => lighten(0.075, variants[props.variant].bg)};
     
     position: absolute;
     z-index: -1;
     padding: 0.85em 0.75em;
     display: block;
-    transition: all 0.35s;
+    transition: all 0.4s;
 
     top: 0;
     bottom: 0;
     left: -100%;
     right: 100%;
   }
-  
-  :hover::after {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    transition: all 0.35s;
+
+  transition: all 0.4s;
+
+  &:hover {${
+    props => props.hover === 'with-effect'
+      ? `
+        &::after {
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+      `
+      : `
+        background: ${darken(0.15, variants[props.variant].bg)}
+      `
+  }}
+
+  &:disabled {
+    opacity: 0.5;
   }
 `

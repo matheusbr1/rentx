@@ -67,7 +67,7 @@ export const AppBarLogoutButton = styled.button `
   border: none;
   
   img:hover {
-    transition: all 0.35s;
+    transition: all 0.4s;
     opacity: 0.6;
   }
 `

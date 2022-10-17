@@ -17,3 +17,11 @@ export const Secondary: StoryObj<ButtonProps> = {
 export const Success: StoryObj<ButtonProps> = {
   args: { variant: 'success', children: 'Button Label' },
 }
+
+export const Disabled: StoryObj<ButtonProps> = {
+  args: { variant: 'primary', children: 'Button Label', disabled: true },
+}
+
+export const WithHoverEffect: StoryObj<ButtonProps> = {
+  args: { variant: 'primary', children: 'Button Label', hover: 'with-effect' },
+}
