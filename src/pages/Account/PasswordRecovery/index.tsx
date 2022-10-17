@@ -14,7 +14,7 @@ const PasswordRecovery: React.FC = () => {
     >
       <S.Content>
         <S.LeftSide>
-          <img src="/assets/bgs/Audi2.svg" alt="Carro Audi" />
+          <img src="/assets/Audi2.svg" alt="Carro Audi" />
         </S.LeftSide>
 
         <S.RightSide>

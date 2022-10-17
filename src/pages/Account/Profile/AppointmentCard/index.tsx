@@ -30,7 +30,7 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({ appointment })
         <div>
           <p> {new Date(appointment.start_date).toDateString()} </p>
 
-          <img src="/assets/icons/arrow.svg" alt="Flecha apontando para direita" />
+          <img src="/assets/arrow.svg" alt="Flecha apontando para direita" />
 
           <p> {new Date(appointment.end_date).toDateString()} </p>
         </div>

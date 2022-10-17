@@ -21,7 +21,7 @@ const SignUp: React.FC = () => {
 
             <TextField 
               placeholder='Nome' 
-              icon='email' 
+              icon='profile' 
             />
 
             <TextField 
@@ -32,7 +32,7 @@ const SignUp: React.FC = () => {
 
             <TextField 
               placeholder='CNH' 
-              icon='email' 
+              icon='car' 
             />
 
             <TextField 
@@ -52,7 +52,7 @@ const SignUp: React.FC = () => {
         </S.LeftSide>
 
         <S.RightSide>
-          <img src="/assets/bgs/Dodge.svg" alt="Carro Dodge" />
+          <img src="/assets/Dodge.svg" alt="Carro Dodge" />
         </S.RightSide>
       </S.Content>
     </Layout>

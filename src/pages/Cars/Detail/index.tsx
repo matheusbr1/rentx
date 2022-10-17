@@ -11,9 +11,9 @@ import { Modal } from './Modal';
 
 export const car = {
   images: [
-    "/assets/carrousel/Audi.svg",
-    "/assets/carrousel/Audi.svg",
-    "/assets/carrousel/Audi.svg",
+    "/assets/Audi.svg",
+    "/assets/Audi.svg",
+    "/assets/Audi.svg",
   ],
   specifications: [
     { img: '/assets/SpeedSpec.svg', text: '270km/h' },
