@@ -7,6 +7,7 @@ import { CarDetail } from './pages/Cars/Detail';
 import { CarsList } from './pages/Cars/List';
 import { RentedCar } from './pages/Cars/Rented';
 import { Start } from './pages/Start';
+import { SignUp } from './pages/Account/SignUp';
 
 const Routes: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const Routes: React.FC = () => {
         
         <Route path='/account/profile' component={Profile} />
         <Route path='/account/signin' component={SignIn} />
+        <Route path='/account/signup' component={SignUp} />
         <Route path='/account/password-recovery' component={PasswordRecovery} />
       </Switch>
     </Router>

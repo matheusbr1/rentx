@@ -7,39 +7,56 @@ import { TextField } from '../../../components/TextField';
 
 import * as S from './styles'
 
-const PasswordRecovery: React.FC = () => {
+const SignUp: React.FC = () => {
   return (
     <Layout
       appBarComponent={<AppBar title='Perfil' />}
     >
       <S.Content>
         <S.LeftSide>
-          <img src="/assets/bgs/Audi2.svg" alt="Carro Audi" />
-        </S.LeftSide>
-
-        <S.RightSide>
           <S.Form action="">
-            <h1>Recuperar Senha</h1>
+            <h1>Crie sua conta</h1>
 
-            <p>Insira seu e-mail para receber um <br /> link de recuperação</p>
+            <p>Faça seu cadastro de forma <br /> rápida e fácil.</p>
+
+            <TextField 
+              placeholder='Nome' 
+              icon='email' 
+            />
 
             <TextField 
               placeholder='E-mail' 
               icon='email' 
+              type='email'
+            />
+
+            <TextField 
+              placeholder='CNH' 
+              icon='email' 
+            />
+
+            <TextField 
+              placeholder='Senha' 
+              icon='password' 
+              type='password' 
             />
 
             <Link to='/account/signin' >
               Voltar para a página de login
             </Link>
 
-            <Button width='full' >
-              Enviar
+            <Button width='full'>
+              Cadastrar
             </Button>
           </S.Form>
+        </S.LeftSide>
+
+        <S.RightSide>
+          <img src="/assets/bgs/Dodge.svg" alt="Carro Dodge" />
         </S.RightSide>
       </S.Content>
     </Layout>
   )
 }
 
-export { PasswordRecovery }
+export { SignUp }

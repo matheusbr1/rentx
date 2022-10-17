@@ -11,7 +11,16 @@ export const Content = styled.div`
 export const LeftSide = styled.div`
   flex: 1;
   display: flex;
-  
+  align-items: center;
+  justify-content: start;
+`
+
+export const RightSide = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   img {
     margin: 0 auto;
     display: block;
@@ -21,13 +30,6 @@ export const LeftSide = styled.div`
   @media (max-width: 1024px) {
     display: none;
   }
-`
-
-export const RightSide = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: end;
 `
 
 export const Form = styled.form`

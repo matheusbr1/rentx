@@ -35,7 +35,7 @@ const Start: React.FC = () => {
         </S.LeftSide>
 
         <S.RightSide>
-          <img src='./assets/AudiPaginaInicial.svg' />  
+          <img src='./assets/bgs/Audi1.svg' />  
         </S.RightSide>
       </S.Content>
     </S.Container>

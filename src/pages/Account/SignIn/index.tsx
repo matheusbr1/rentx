@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { AppBar } from '../../../components/AppBar';
 import { Button } from '../../../components/Button';
 import { Layout } from '../../../components/Layout';
@@ -8,13 +8,15 @@ import { TextField } from '../../../components/TextField';
 import * as S from './styles'
 
 const SignIn: React.FC = () => {
+  const { push } = useHistory()
+
   return (
     <Layout
       appBarComponent={<AppBar title='Perfil' />}
     >
       <S.Content>
         <S.LeftSide>
-          <img src="/assets/AudiSignInBg.svg" alt="Carro Audi" />
+          <img src="/assets/bgs/Audi2.svg" alt="Carro Audi" />
         </S.LeftSide>
 
         <S.RightSide>
@@ -43,7 +45,11 @@ const SignIn: React.FC = () => {
               Login
             </Button>
 
-            <Button width='full' variant='secondary' >
+            <Button 
+              width='full' 
+              variant='secondary' 
+              onClick={() => push('/account/signup')} 
+            >
               Criar conta gratuita
             </Button>
           </S.Form>
