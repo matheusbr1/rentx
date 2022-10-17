@@ -18,3 +18,5 @@ export const Default: StoryObj<TextFieldProps> = {
     icon: 'email',
    }
 }
+
+export const WithoutIcon: StoryObj<TextFieldProps> = {}

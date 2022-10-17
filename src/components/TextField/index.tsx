@@ -1,4 +1,6 @@
 import React, { InputHTMLAttributes, useState } from 'react';
+import { EmailIcon } from '.././../../public/assets/icons/asComponents/EmailIcon'
+import { PasswordIcon } from '.././../../public/assets/icons/asComponents/PasswordIcon'
 
 import * as S from './styles'
 
@@ -6,21 +8,33 @@ type InputAttributes = InputHTMLAttributes<HTMLInputElement>
 
 type Icon = 'email' | 'password'
 
+interface Icons {
+  [key: string]: any
+}
+
+const icons: Icons = {
+  'email': EmailIcon,
+  'password': PasswordIcon,
+}
+
 export interface TextFieldProps extends InputAttributes {
   icon?: Icon
   helperText?: string
   isErrored?: boolean
 }
 
-const TextField: React.FC<TextFieldProps> = ({ icon, helperText, isErrored, ...props }) => {
+const TextField: React.FC<TextFieldProps> = ({ icon: Icon, helperText, isErrored, ...props }) => {
   const [type, setType] = useState(props.type)
+
+  const CurrentIcon = icons[Icon as string]
 
   return (
     <>
       <S.FieldWrapper isErrored={isErrored} >
-        {icon && (
+        {Icon && (
           <S.FieldStartIconBox>
-            <img src={`/assets/icons/${icon}.svg`} />
+            <CurrentIcon /> 
+            {/* <img src={`/assets/icons/${icon}.svg`} /> */}
           </S.FieldStartIconBox>
         )}
         

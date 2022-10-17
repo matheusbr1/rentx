@@ -26,6 +26,24 @@ export const FieldWrapper = styled.div<Props>`
     ? theme.colors.red.main
     : theme.colors.gray[100]
   };
+
+  overflow: hidden;
+
+  &:focus-within {
+    border-color: #AEAEB3;
+
+    svg path {
+      fill: ${({ theme }) => theme.colors.red.main};
+    }
+  }
+
+  &:hover {
+    border-color: #AEAEB3;
+  }
+
+  svg path {
+    fill: ${({ theme, isErrored }) => isErrored && theme.colors.red.main};
+  }
 `
 
 export const FieldStartIconBox = styled.div`
@@ -33,7 +51,7 @@ export const FieldStartIconBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  border-right: 4px solid ${({ theme }) => theme.colors.gray[50]};
+  border-right: 2px solid ${({ theme }) => theme.colors.gray[50]};
   padding: ${pxToRem(22)};
 `
 
