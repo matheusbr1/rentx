@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 const menuItems = [
-  { imageName: 'Home', link: '/cars/list', activeInPath: '/cars/list' },
-  { imageName: 'Carros', link: '/cars/filter', activeInPath: '/cars/filter' },
+  // { imageName: 'Home', link: '/cars/list', activeInPath: '/cars/list' },
+  // { imageName: 'Carros', link: '/cars/filter', activeInPath: '/cars/filter' },
+  { imageName: 'Carros', link: '/cars/list', activeInPath: '/cars/list' },
   { imageName: 'Perfil', link: '/account/signIn', activeInPath: '/account' },
 ]
 
