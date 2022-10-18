@@ -1,8 +1,7 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAuthStore } from '../../store/useAuthStore';
 import * as S from './styles'
-
-const isLogged = true
 
 export interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string
@@ -11,6 +10,13 @@ export interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
 const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
   const navigation = useHistory()
 
+  const auth = useAuthStore()
+
+  const handleSignOut = () => {
+    auth.signOut()
+    navigation.push('/')
+  }
+
   return (
     <S.AppBarContainer {...rest}>
       <S.AppBarContent>
@@ -18,7 +24,7 @@ const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
           {title}
         </S.AppBarTitle>
   
-        {!isLogged ? (
+        {!auth.isAuthenticated ? (
           <S.AppBarUserSession>
             <Link to='/' >
               <p>Faça Login</p>
@@ -29,7 +35,7 @@ const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
             </S.AppBarUserAvatar>
           </S.AppBarUserSession>
         ) : (
-          <S.AppBarLogoutButton onClick={() => navigation.push('/')} >
+          <S.AppBarLogoutButton onClick={handleSignOut} >
             <img src='/assets/Sair.svg' alt="Ícone de desligar" />
           </S.AppBarLogoutButton>
         )}
@@ -38,6 +44,4 @@ const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
   )
 } 
 
-const Memoized = memo(AppBar)
-
-export { Memoized as AppBar } 
+export { AppBar } 
