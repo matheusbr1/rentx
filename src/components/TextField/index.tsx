@@ -15,7 +15,10 @@ export interface TextFieldProps extends InputAttributes {
 
 const Field: React.ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = 
   ({ icon, helperText, isErrored, ...props }, ref) => {
+  
+  // Password Visibility
   const [type, setType] = useState(props.type)
+  const handlePasswordVisibility = () =>  setType(type === 'password'  ? 'text' : 'password')
 
   const CurrentIcon = iconsAsComps[icon as Icon]
 
@@ -29,18 +32,16 @@ const Field: React.ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> =
         )}
         
         <S.Field
+          {...props}
           ref={ref}
           type={type} 
           tabIndex={1} 
-          {...props} 
         />
 
         {props.type === 'password' && (
           <S.FieldEndIconBox>
-            <button
-              onClick={() => setType(type === 'password'  ? 'text' : 'password')} 
-            >
-              <img src='/assets/passwordVisibility.svg' />
+            <button onClick={handlePasswordVisibility}  type='button'>
+              <img src={`/assets/password${type === 'password' ? 'Invisible' : 'Visible'}.svg`} />
             </button>
           </S.FieldEndIconBox>
         )}
