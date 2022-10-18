@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useState } from 'react';
+import React, { InputHTMLAttributes, useState, forwardRef } from 'react';
 import { iconsAsComps } from '../../assets/asComponents'
 
 import * as S from './styles'
@@ -13,22 +13,27 @@ export interface TextFieldProps extends InputAttributes {
   isErrored?: boolean
 }
 
-const TextField: React.FC<TextFieldProps> = ({ icon, helperText, isErrored, ...props }) => {
+const Field: React.ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = 
+  ({ icon, helperText, isErrored, ...props }, ref) => {
   const [type, setType] = useState(props.type)
 
   const CurrentIcon = iconsAsComps[icon as Icon]
 
   return (
-    <>
+    <div>
       <S.FieldWrapper isErrored={isErrored} >
         {icon && (
           <S.FieldStartIconBox>
             <CurrentIcon /> 
-            {/* <img src={`/assets/${icon}.svg`} /> */}
           </S.FieldStartIconBox>
         )}
         
-        <S.Field {...props} type={type} tabIndex={1} />
+        <S.Field
+          ref={ref}
+          type={type} 
+          tabIndex={1} 
+          {...props} 
+        />
 
         {props.type === 'password' && (
           <S.FieldEndIconBox>
@@ -46,8 +51,10 @@ const TextField: React.FC<TextFieldProps> = ({ icon, helperText, isErrored, ...p
           {helperText}
         </S.FieldHelperText>
       )}
-    </>
+    </div>
   )
 }
 
-export { TextField } 
+const TextField = forwardRef(Field)
+
+export { TextField }

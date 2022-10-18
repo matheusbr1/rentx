@@ -32,7 +32,7 @@ export const StyledButton = styled.button<ButtonProps>`
   background: ${props => variants[props.variant].bg};
   color: ${props => variants[props.variant].color};
 
-  border: 2px solid;
+  border: 1px solid;
   border-color: ${props => props.variant === 'primary' 
     ? 'transparent' 
     : props.theme.colors.gray[300]
@@ -77,11 +77,16 @@ export const StyledButton = styled.button<ButtonProps>`
         }
       `
       : `
+        border-color: ${props.theme.colors.gray[800]};
         background: ${darken(0.15, variants[props.variant].bg)}
       `
   }}
 
   &:disabled {
     opacity: 0.5;
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.gray[800]};
   }
 `

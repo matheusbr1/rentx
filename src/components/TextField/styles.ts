@@ -30,7 +30,7 @@ export const FieldWrapper = styled.div<Props>`
   overflow: hidden;
 
   &:focus-within {
-    border-color: #AEAEB3;
+    border-color: ${({ theme }) => theme.colors.gray[400]};
 
     svg path {
       fill: ${({ theme }) => theme.colors.red.main};
@@ -38,7 +38,7 @@ export const FieldWrapper = styled.div<Props>`
   }
 
   &:hover {
-    border-color: #AEAEB3;
+    border-color: ${({ theme }) => theme.colors.gray[400]};
   }
 
   svg path {

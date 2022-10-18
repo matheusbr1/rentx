@@ -18,7 +18,10 @@ const SideMenu: React.FC<SideMenuProps> = ({ pathname }) => (
 
     <S.SideMenuItens>
       {menuItems.map(item => (
-        <S.SideMenuItem isActive={pathname?.includes(item.activeInPath)} >
+        <S.SideMenuItem 
+          key={item.link} 
+          isActive={pathname?.includes(item.activeInPath)} 
+        >
           <Link to={item.link} >
             <img src={`/assets/${item.imageName}.svg`} alt={item.imageName} />
           </Link>
