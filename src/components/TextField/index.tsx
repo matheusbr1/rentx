@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, useState } from 'react';
-import { iconsAsComps } from '../../../public/assets/asComponents'
+import { iconsAsComps } from '../../assets/asComponents'
 
 import * as S from './styles'
 
