@@ -1,19 +1,15 @@
-import { render } from '@testing-library/react'
 import { Card } from './'
+import { renderTheme } from '../../styles/test/renderTheme'
 import { expect, it } from 'vitest'
-import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from '../../styles/themes/default'
 
 describe('Button Component', () => {
   it('render correctly', () => {
-    const { getByText } = render(
-      <ThemeProvider theme={defaultTheme} >
-        <Card 
-          brand='Honda'
-          model='Fit'
-          price={90000}
-        />
-      </ThemeProvider>
+    const { getByText } = renderTheme(
+      <Card 
+        brand='Honda'
+        model='Fit'
+        price={90000}
+      />
     )
     
     expect(getByText('Honda')).toBeTruthy()

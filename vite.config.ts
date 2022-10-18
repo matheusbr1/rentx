@@ -8,6 +8,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
-    // include: ['**/*.spec.tsx'],
+    include: ['**/*.spec.tsx'],
   },
 } as UserConfig)
