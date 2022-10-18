@@ -57,7 +57,7 @@ export const SideMenuItem = styled.div<SideMenuItemProps>`
     animation-duration: 0.35s;
   }
 
-  img {
-    width: 100%
+  svg path {
+    fill: ${({ isActive, theme: { colors } }) => isActive ? colors.white.main : colors.gray[600]};
   }
 `
