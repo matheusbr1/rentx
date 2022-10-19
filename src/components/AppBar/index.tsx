@@ -10,9 +10,10 @@ export interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
 const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
   const { push } = useHistory()
 
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, signOut } = useAuth()
 
   const handleSignOut = () => {
+    signOut()
     push('/')
   }
 

@@ -10,8 +10,10 @@ const CarsList: React.FC = () => {
   const [cars, setCars] = useState([])
 
   useEffect(() => {
-    api.get('/cars/available')
-      .then(response => setCars(response.data))
+    if (!cars.length) {
+      api.get('/cars/available')
+        .then(response => setCars(response.data))
+    }
   }, [])
 
   return (

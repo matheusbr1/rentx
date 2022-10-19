@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react'
 import { api } from '../../services/api'
-import { setCookie } from 'nookies'
+import { destroyCookie, setCookie } from 'nookies'
 import usePersistedState from '../usePersistedState'
 import { HeadersDefaults } from 'axios'
 
@@ -20,6 +20,7 @@ type SignInCreadentials = {
 
 interface IAuthContext {
   signIn(credentials: SignInCreadentials): Promise<void>
+  signOut(): void
   isAuthenticated: boolean
   user: User | null
   getUserProfile(): Promise<void>
@@ -55,7 +56,7 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
       setUser(userProfile)
     } catch (error) {
       // Snack Erro
-      alert('Ocorreu um erro ao buscar o perfil!')
+      console.log('Ocorreu um erro ao buscar o perfil!')
     }
   }
 
@@ -79,18 +80,25 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
       headers['Authorization'] = `Bearer ${data.token}`
 
       // Snack Sucesso
-      alert('Login realizado com sucesso!')
+      console.log('Login realizado com sucesso!')
     } catch (error) { 
       console.log(error)
 
       // Snack Erro
-      alert('Ocorreu um erro ao realizar login!')
+      console.log('Ocorreu um erro ao realizar login!')
     }
+  }
+
+  function signOut () {
+    destroyCookie(undefined, 'rentx.token')
+    destroyCookie(undefined, 'rentx.refresh_token')
+    setUser(null)
   }
 
   return (
     <AuthContext.Provider value={{ 
       signIn, 
+      signOut,
       isAuthenticated,
       user,
       getUserProfile

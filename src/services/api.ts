@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosRequestHeaders, HeadersDefaults } from 'axios'
-import { parseCookies, setCookie } from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 let cookies = parseCookies()
 let isRefreshing = false
@@ -13,9 +13,14 @@ const api = axios.create({
 })
 
 export { api }
-
 interface APIHeaders extends HeadersDefaults {
   Authorization: string
+}
+
+function signOut() {
+  destroyCookie(undefined, 'rentx.token')
+  destroyCookie(undefined, 'rentx.refresh_token')
+  localStorage.removeItem('@rentx:user')
 }
 
 // Intercepting the request to refresh token
@@ -63,6 +68,9 @@ api.interceptors.response.use(response => {
           failedRequestsQueue.forEach(request => {
             request.onFailure()
           })
+
+          // user signout
+          signOut()
         }).finally(() => {
           // Reseting Refreshing status
           isRefreshing = false
@@ -93,6 +101,9 @@ api.interceptors.response.use(response => {
        })
     } else {
       // user signout
+      signOut()
     }
   }
+
+  return Promise.reject(error)
 })

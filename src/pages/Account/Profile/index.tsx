@@ -38,15 +38,12 @@ const Profile: React.FC = () => {
     return array
   }, [])
 
-  const { getUserProfile, user } = useAuth()
+  const { getUserProfile } = useAuth()
 
   useEffect(() => {
     (async () => {
-      if (!user) {
-        await getUserProfile()
-      } else {
-        // get appointments
-      }
+      await getUserProfile()
+      // get appointments
     } )()
   }, [])
 
