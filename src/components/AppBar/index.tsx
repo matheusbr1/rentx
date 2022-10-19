@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuthStore } from '../../store/useAuthStore';
+import { useAuth } from '../../hooks/contexts/useAuth';
 import * as S from './styles'
 
 export interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -8,13 +8,12 @@ export interface AppBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
-  const navigation = useHistory()
+  const { push } = useHistory()
 
-  const auth = useAuthStore()
+  const { isAuthenticated } = useAuth()
 
   const handleSignOut = () => {
-    auth.signOut()
-    navigation.push('/')
+    push('/')
   }
 
   return (
@@ -24,7 +23,7 @@ const AppBar: React.FC<AppBarProps> = ({ title, ...rest }) => {
           {title}
         </S.AppBarTitle>
   
-        {!auth.isAuthenticated ? (
+        {!isAuthenticated ? (
           <S.AppBarUserSession>
             <Link to='/' >
               <p>Faça Login</p>

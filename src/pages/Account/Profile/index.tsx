@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, memo } from 'react';
 import { AppBar } from '../../../components/AppBar';
 import { Layout } from '../../../components/Layout';
 
@@ -7,6 +7,7 @@ import * as S from './styles'
 import { Avatar } from './Avatar';
 import { Tabs } from './Tabs';
 import { AppointmentCard } from './AppointmentCard';
+import { useAuth } from '../../../hooks/contexts/useAuth';
 
 export const appointment = {
   id: "666e65d6-5604-4ad9-a5ec-277246036a1e",
@@ -35,6 +36,18 @@ const Profile: React.FC = () => {
     }
 
     return array
+  }, [])
+
+  const { getUserProfile, user } = useAuth()
+
+  useEffect(() => {
+    (async () => {
+      if (!user) {
+        await getUserProfile()
+      } else {
+        // get appointments
+      }
+    } )()
   }, [])
 
   return (
@@ -73,4 +86,6 @@ const Profile: React.FC = () => {
   )
 }
 
-export { Profile }
+const memoized = memo(Profile)
+
+export { memoized as Profile }

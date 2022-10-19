@@ -10,8 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 
 import * as S from './styles'
-import { api } from '../../../services/api';
-import { useAuthStore } from '../../../store/useAuthStore';
+import { useAuth } from '../../../hooks/contexts/useAuth';
 
 interface ISignInFields {
   email: string
@@ -29,32 +28,17 @@ const schema = yup.object({
 const SignIn: React.FC = () => {
   const { push } = useHistory()
 
-  const auth = useAuthStore()
+  const { signIn } = useAuth()
   
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ISignInFields>({
     resolver: yupResolver(schema),
     shouldFocusError: true
   });
-
-  const handleSignIn = async (fields: ISignInFields) => {
-    try {
-      const { data } = await api.post(`sessions`, fields)
-
-      console.log(data)
-
-      // Setar usuário
-      auth.signIn(data.user)
-
-      // Armazenar tokens
-
-      // Snack sucesso
-    } catch (error: any) {
-      console.log(error.response.data) 
-      // Snack erro
-    }
-  }
   
-  const onSubmit: SubmitHandler<ISignInFields> = async fields => await handleSignIn(fields);
+  const onSubmit: SubmitHandler<ISignInFields> = async fields => {
+    await signIn(fields)
+    push('/account/profile')
+  } 
 
   return (
     <Layout
