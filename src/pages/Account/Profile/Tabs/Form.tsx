@@ -119,18 +119,15 @@ export const ChangePasswordForm: React.FC = () => {
     shouldFocusError: true
    })
 
-   const onSubmit: SubmitHandler<ChangePasswordFields> = async fields => {
+   const onSubmit: SubmitHandler<ChangePasswordFields> = async (fields) => {
     try {
-      let isOldPasswordCorrect = false
-      
-      // Verificar se a senha antiga está correta
-      // Criar endpoint para verificação
+      const { data } = await api.post('/password/verify', { password: fields.current_password })
 
-      if (isOldPasswordCorrect) {
+      if (data.isCorrect) {
         await api.put('/users', fields)
 
         console.log('Dados alterados com sucesso!')
-      } else {
+      } else {  
         setError('current_password', {
           message: 'Senha incorreta!',
         }, {
