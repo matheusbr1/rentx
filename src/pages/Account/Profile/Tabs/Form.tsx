@@ -8,6 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 
 import * as S from './styles'
+import { api } from '../../../../services/api';
+import { useAuth } from '../../../../hooks/contexts/useAuth';
 
 async function fakeRequest(time: number, error?: boolean) {
   return new Promise((resolve, reject) => {
@@ -35,18 +37,21 @@ interface DataFormFiels {
 }
 
 export const ChangeDataForm: React.FC = () => {
+  const { user } = useAuth()
+
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<DataFormFiels>({ 
     resolver: yupResolver(profileDataSchema),
-    shouldFocusError: true
+    shouldFocusError: true,
+    defaultValues: {
+      driver_license: user?.driver_license,
+      name: user?.name,
+      email: user?.email
+    }
    })
 
    const onSubmit: SubmitHandler<DataFormFiels> = async fields => {
     try {
-      console.log(fields)
-
-      await fakeRequest(3000)
-
-      // Do the integration
+      await api.put('/users', fields)
 
       console.log('Dados alterados com sucesso!')
     } catch (error) {
@@ -109,20 +114,29 @@ interface ChangePasswordFields {
 }
 
 export const ChangePasswordForm: React.FC = () => {
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ChangePasswordFields>({ 
+  const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<ChangePasswordFields>({ 
     resolver: yupResolver(changePasswordSchema),
     shouldFocusError: true
    })
 
    const onSubmit: SubmitHandler<ChangePasswordFields> = async fields => {
     try {
-      console.log(fields)
+      let isOldPasswordCorrect = false
+      
+      // Verificar se a senha antiga está correta
+      // Criar endpoint para verificação
 
-      await fakeRequest(3000, true)
+      if (isOldPasswordCorrect) {
+        await api.put('/users', fields)
 
-      // Do the integration
-
-      console.log('Dados alterados com sucesso!')
+        console.log('Dados alterados com sucesso!')
+      } else {
+        setError('current_password', {
+          message: 'Senha incorreta!',
+        }, {
+          shouldFocus: true
+        })
+      }
     } catch (error) {
       console.log('Ocorreu um erro ao realizar a alteração!')
     }
