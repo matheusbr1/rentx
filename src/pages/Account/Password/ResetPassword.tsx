@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { AppBar } from '../../../components/AppBar';
 import { Button } from '../../../components/Button';
 import { Layout } from '../../../components/Layout';
@@ -7,7 +6,7 @@ import { TextField } from '../../../components/TextField';
 
 import * as S from './styles'
 
-const PasswordRecovery: React.FC = () => {
+const ResetPassword: React.FC = () => {
   return (
     <Layout
       appBarComponent={<AppBar title='Perfil' />}
@@ -19,21 +18,24 @@ const PasswordRecovery: React.FC = () => {
 
         <S.RightSide>
           <S.Form action="">
-            <h1>Recuperar Senha</h1>
+            <h1>Alterar Senha</h1>
 
-            <p>Insira seu e-mail para receber um <br /> link de recuperação</p>
+            <p>Escolha uma nova senha <br /> para a sua conta!</p>
 
             <TextField 
-              placeholder='E-mail' 
-              icon='email' 
+              placeholder='Nova Senha' 
+              type='password'
+              icon='password' 
             />
 
-            <Link to='/account/signin' >
-              Voltar para a página de login
-            </Link>
+            <TextField 
+              placeholder='Confirmar Senha' 
+              type='password'
+              icon='password'  
+            />
 
             <Button width='full' >
-              Enviar
+              Alterar
             </Button>
           </S.Form>
         </S.RightSide>
@@ -42,4 +44,4 @@ const PasswordRecovery: React.FC = () => {
   )
 }
 
-export { PasswordRecovery }
+export { ResetPassword }
