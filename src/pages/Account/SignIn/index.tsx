@@ -10,12 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 
 import * as S from './styles'
-import { useAuth } from '../../../hooks/contexts/useAuth';
-
-interface ISignInFields {
-  email: string
-  password: string
-}
+import { SignInCreadentials, useAuth } from '../../../hooks/contexts/useAuth';
 
 const schema = yup.object({
   email: yup.string()
@@ -30,12 +25,12 @@ const SignIn: React.FC = () => {
 
   const { signIn } = useAuth()
   
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ISignInFields>({
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignInCreadentials>({
     resolver: yupResolver(schema),
     shouldFocusError: true
   });
   
-  const onSubmit: SubmitHandler<ISignInFields> = async fields => {
+  const onSubmit: SubmitHandler<SignInCreadentials> = async fields => {
     await signIn(fields)
     push('/account/profile')
   } 
@@ -59,7 +54,7 @@ const SignIn: React.FC = () => {
               placeholder='E-mail'
               icon='email' 
               type='email'
-              {...register("email", { required: true })}
+              {...register("email")}
               isErrored={!!errors.email?.message}
               helperText={errors.email?.message}
             />

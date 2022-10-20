@@ -13,14 +13,22 @@ type User = {
 
 type ProfileRequestResponse = User
 
-type SignInCreadentials = {
+export type SignInCreadentials = {
   email: string
   password: string
+}
+
+export interface SignUpFields {
+  name: string
+	email: string
+	driver_license: string
+	password: string
 }
 
 interface IAuthContext {
   signIn(credentials: SignInCreadentials): Promise<void>
   signOut(): void
+  signUp(fields: SignUpFields): Promise<void>
   isAuthenticated: boolean
   user: User | null
   getUserProfile(): Promise<void>
@@ -39,26 +47,6 @@ const AuthContext = createContext<IAuthContext>({} as IAuthContext)
 const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
   const [user, setUser] = usePersistedState('user', null)
   const isAuthenticated = !!user
-
-  async function getUserProfile () {
-    try {
-      const { data } = await api.get<ProfileRequestResponse>('users/profile')
-
-      console.log(data)
-
-      const userProfile: User = {
-        name: data.name,
-        email: data.email,
-        avatar_URL: data.avatar_URL,
-        driver_license: data.driver_license,
-      }
-
-      setUser(userProfile)
-    } catch (error) {
-      // Snack Erro
-      console.log('Ocorreu um erro ao buscar o perfil!')
-    }
-  }
 
   async function signIn({ email, password }: SignInCreadentials) {
     try {
@@ -95,10 +83,51 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
     setUser(null)
   }
 
+  async function getUserProfile () {
+    try {
+      const { data } = await api.get<ProfileRequestResponse>('users/profile')
+
+      console.log(data)
+
+      const userProfile: User = {
+        name: data.name,
+        email: data.email,
+        avatar_URL: data.avatar_URL,
+        driver_license: data.driver_license,
+      }
+
+      setUser(userProfile)
+    } catch (error) {
+      // Snack Erro
+      console.log('Ocorreu um erro ao buscar o perfil!')
+    }
+  }
+
+  async function signUp (fields: SignUpFields) {
+    try {
+      const { name, email, password, driver_license } = fields
+
+      await api.post('users', {
+        name: name,
+        username: name,
+        email: email,
+        password: password,
+        driver_license: driver_license
+      })
+
+      // Snack Sucesso
+      console.log('Conta criada com sucesso')    
+    } catch (error) {
+      // Snack Erro
+      console.log('Ocorreu um erro ao criar conta!')
+    }
+  }
+
   return (
     <AuthContext.Provider value={{ 
       signIn, 
       signOut,
+      signUp,
       isAuthenticated,
       user,
       getUserProfile
