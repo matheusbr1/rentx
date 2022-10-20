@@ -18,6 +18,7 @@ const schema = yup.object({
     .email('Endereço de E-mail inválido!'),
   password: yup.string()
     .required('Campo Obrigatório!')
+    .min(4, 'A senha deve conter no mínimo 4 caracteres'),
 });
 
 const SignIn: React.FC = () => {
@@ -31,8 +32,12 @@ const SignIn: React.FC = () => {
   });
   
   const onSubmit: SubmitHandler<SignInCreadentials> = async fields => {
-    await signIn(fields)
-    push('/account/profile')
+    try {
+      await signIn(fields)
+      push('/account/profile')  
+    } catch (error) {
+      // do nothing
+    }
   } 
 
   return (
@@ -68,7 +73,7 @@ const SignIn: React.FC = () => {
               helperText={errors.password?.message}
             />
 
-            <Link to='/account/password-recovery' >
+            <Link to='/account/password/forgot' >
               Esqueci minha senha
             </Link>
 

@@ -36,8 +36,12 @@ const SignUp: React.FC = () => {
   })
 
   const onSubmit: SubmitHandler<SignUpFields> = async fields => {
-    await signUp(fields)
-    push('/account/signIn')
+    try {
+      await signUp(fields)
+      push('/account/signIn')  
+    } catch (error) {
+      // do nothing
+    }
   } 
 
   return (

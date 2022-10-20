@@ -70,10 +70,32 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
       // Snack Sucesso
       console.log('Login realizado com sucesso!')
     } catch (error) { 
-      console.log(error)
-
       // Snack Erro
       console.log('Ocorreu um erro ao realizar login!')
+
+      throw new Error()
+    }
+  }
+
+  async function signUp (fields: SignUpFields) {
+    try {
+      const { name, email, password, driver_license } = fields
+
+      await api.post('users', {
+        name: name,
+        username: name,
+        email: email,
+        password: password,
+        driver_license: driver_license
+      })
+
+      // Snack Sucesso
+      console.log('Conta criada com sucesso')    
+    } catch (error) {
+      // Snack Erro
+      console.log('Ocorreu um erro ao criar conta!')
+
+      throw new Error()
     }
   }
 
@@ -100,26 +122,6 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
     } catch (error) {
       // Snack Erro
       console.log('Ocorreu um erro ao buscar o perfil!')
-    }
-  }
-
-  async function signUp (fields: SignUpFields) {
-    try {
-      const { name, email, password, driver_license } = fields
-
-      await api.post('users', {
-        name: name,
-        username: name,
-        email: email,
-        password: password,
-        driver_license: driver_license
-      })
-
-      // Snack Sucesso
-      console.log('Conta criada com sucesso')    
-    } catch (error) {
-      // Snack Erro
-      console.log('Ocorreu um erro ao criar conta!')
     }
   }
 
