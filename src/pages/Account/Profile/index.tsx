@@ -42,12 +42,8 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      if (!user) {
-        await getUserProfile()
-      } else {
-        // get appointments
-      }
-    } )()
+      await getUserProfile()
+    })()
   }, [])
 
   return (
@@ -58,8 +54,8 @@ const Profile: React.FC = () => {
         <S.LeftSide>
           <S.ProfileEdition>
             <Avatar 
-              imageSource='hhttps://lh3.googleusercontent.com/a/ALm5wu2F4e66k4Am3qQkT4hB3MPApOs8neetrTJChf8T04k=s288-p-rw-no'
-              name='Nome'
+              imageSource={user?.avatar_URL}
+              name={user?.name}
             />
 
             <Tabs />
