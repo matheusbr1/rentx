@@ -2,6 +2,7 @@ import React from 'react'
 import ReactCarousel from 'better-react-carousel'
 import styled from 'styled-components'
 import { pxToRem } from '../../../../styles/utils/pxToRem'
+import { CarImage } from '../../List'
 
 const CarouselImageWrapper = styled.div`
   display: flex;
@@ -24,10 +25,10 @@ const CarouselDot = styled.span<StylesCarouselDotProps>`
 `
 
 export interface CarouselProps {
-  images: string[]
+  images: CarImage[]
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => (
+const Carousel: React.FC<CarouselProps> = ({ images = [] }) => (
   <ReactCarousel 
     cols={1} 
     rows={1} 
@@ -40,7 +41,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => (
     {images.map(image => (
       <ReactCarousel.Item>
         <CarouselImageWrapper>
-          <img width="85%" src={image} />
+          <img width="85%" src={image.image_URL} />
         </CarouselImageWrapper>
       </ReactCarousel.Item>
     ))}

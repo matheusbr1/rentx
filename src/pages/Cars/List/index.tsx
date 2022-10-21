@@ -6,7 +6,7 @@ import { Layout } from '../../../components/Layout';
 import { useCars } from '../../../fetchs';
 import * as S from './styles';
 
-type CarImage = {
+export type CarImage = {
   id: string
   image_URL: string
 }
@@ -14,6 +14,7 @@ type CarImage = {
 export type Car = {
   id: string
   name: string
+  description: string
   daily_rate: string
   brand: string
   images: CarImage[]

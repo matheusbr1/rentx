@@ -16,9 +16,10 @@ const Info: React.FC<InfoProps> = ({ title, value }) => (
 
 interface TabsProps {
   onOpenCalendar: () => void
+  carDescription: string
 }
 
-const Tabs: React.FC<TabsProps> = ({ onOpenCalendar }) => {
+const Tabs: React.FC<TabsProps> = ({ onOpenCalendar, carDescription }) => {
   return (
     <S.Tabs defaultValue="tab-1" >
       <S.List>
@@ -28,7 +29,7 @@ const Tabs: React.FC<TabsProps> = ({ onOpenCalendar }) => {
 
       <S.Content value="tab-1" >
         <p className="car_description" >
-          Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
+          {carDescription}
         </p>
       </S.Content>
 

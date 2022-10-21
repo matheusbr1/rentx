@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Button } from '../../../components/Button'
 import { Link, useHistory } from 'react-router-dom';
 import { Layout } from '../../../components/Layout';
@@ -8,13 +8,14 @@ import { Carousel } from './Carousel';
 import * as S from './styles';
 import { Tabs } from './Tabs';
 import { Modal } from './Modal';
+import { useCars } from '../../../fetchs';
+import { Car, CarImage } from '../List';
 
 export const car = {
   images: [
-    "/assets/Audi.svg",
-    "/assets/Audi.svg",
-    "/assets/Audi.svg",
-  ],
+    { id: '1', image_URL: "/assets/Audi.svg" },
+    { id: '2', image_URL: "/assets/Audi.svg" },
+  ] as CarImage[],
   specifications: [
     { img: '/assets/SpeedSpec.svg', text: '270km/h' },
     { img: '/assets/SpeedSpec.svg', text: '6.8s' },
@@ -26,10 +27,34 @@ export const car = {
 }
 
 const CarDetail: React.FC = () => {
-  const history = useHistory()
+  const { location, push } = useHistory()
+
+  const arr = location.pathname.split('/')
+  const id = arr[arr.length - 1]
+
+  const { data: cars = [] } = useCars()
+  
+  const selectedCar = useMemo(() => {
+    const car = cars.find(car => car.id === id)
+    
+    if (!car) {
+      push('/cars/list')
+    }
+
+    return car as Car
+  }, [cars, id])
 
   const [isPeriodSelected, setIsPeriodSelected] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  
+  function formatCurrency (value: string | undefined) {
+    if (!value) return
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL', 
+      minimumFractionDigits: 0
+    }).format(Number(value))
+  }
 
   return (
     <Layout>
@@ -39,10 +64,10 @@ const CarDetail: React.FC = () => {
         </Link>
 
         <div>
-          <p>Audi</p>
+          <p>{selectedCar?.brand}</p>
           <p>AO DIA</p>
-          <h1>RS 5 Coupé</h1>
-          <h2>R$ 640</h2>
+          <h1>{selectedCar?.name}</h1>
+          <h2>{formatCurrency(selectedCar?.daily_rate)}</h2>
         </div>
       </S.CarDetailHeader>
 
@@ -50,7 +75,7 @@ const CarDetail: React.FC = () => {
 
       <S.CarDetailContent>
         <div>
-          <Carousel images={car.images} />
+          <Carousel images={selectedCar?.images} />
         </div>
 
         <S.CarDetailsWrapper>
@@ -64,10 +89,13 @@ const CarDetail: React.FC = () => {
             ))}
           </S.CarSpecCardWrapper>
 
-          <Tabs onOpenCalendar={() => setIsModalOpen(true)} />
+          <Tabs 
+            onOpenCalendar={() => setIsModalOpen(true)}
+            carDescription={selectedCar.description}
+          />
 
           {isPeriodSelected ? (
-            <Button variant='success' width='full' onClick={() => history.push('rented')} >
+            <Button variant='success' width='full' onClick={() => push('rented')} >
               Alugar agora
             </Button>
           ) : (

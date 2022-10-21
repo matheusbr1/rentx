@@ -9,18 +9,7 @@ import { Tabs } from './Tabs';
 import { RentCard } from './RentCard';
 import { useAuth } from '../../../hooks/contexts/useAuth';
 import { api } from '../../../services/api';
-
-type CarImage = {
-  id: string
-  image_URL: string
-}
-
-type Car = {
-  name: string
-  brand: string
-  daily_rate: string
-  images: CarImage[]
-}
+import { Car } from '../../Cars/List';
 
 export type Rent = {
   id: string
