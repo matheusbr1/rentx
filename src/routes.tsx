@@ -19,7 +19,7 @@ const Routes: React.FC = () => {
         <Route exact path='/' component={Start} />
         
         <Route path='/cars/list' component={CarsList} />
-        <Route path='/cars/detail' component={CarDetail} />
+        <Route path='/cars/detail/:id' component={CarDetail} />
         <Route path='/cars/rented' component={RentedCar} />
         
         <Route path='/account/profile' component={Profile} />

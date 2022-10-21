@@ -5,15 +5,30 @@ import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 import 'react-calendar/dist/Calendar.css';
 
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+// Create a client
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme} >
-      <AppProvider>
-        <Routes />
+    // Provide the client to your App
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={defaultTheme} >
+        <AppProvider>
+          <Routes />  
 
-        <GlobalStyle />
-      </AppProvider>
-    </ThemeProvider>
+          <ReactQueryDevtools />
+
+          <GlobalStyle />
+        </AppProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 

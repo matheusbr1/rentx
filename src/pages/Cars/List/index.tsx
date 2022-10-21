@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar } from '../../../components/AppBar';
 import { Card } from '../../../components/Card';
 import { Layout } from '../../../components/Layout';
-import { api } from '../../../services/api';
+import { useCars } from '../../../fetchs';
 import * as S from './styles';
 
 type CarImage = {
@@ -11,7 +11,7 @@ type CarImage = {
   image_URL: string
 }
 
-type Car = {
+export type Car = {
   id: string
   name: string
   daily_rate: string
@@ -20,14 +20,7 @@ type Car = {
 }
 
 const CarsList: React.FC = () => {
-  const [cars, setCars] = useState<Car[]>([])
-
-  useEffect(() => {
-    if (!cars.length) {
-      api.get('/cars/available')
-        .then(response => setCars(response.data))
-    }
-  }, [])
+   const { data = [] } = useCars()
 
   return (
     <Layout
@@ -42,9 +35,9 @@ const CarsList: React.FC = () => {
         <S.Separator decorative orientation="horizontal" />
 
         <S.GridContainer>
-          {cars.map((car: Car) => (
-            <S.GridItem>
-              <Link to='/cars/detail' >
+          {data?.map((car: Car) => (
+            <S.GridItem key={car.id} >
+              <Link to={`/cars/detail/${car.id}`} >
                 <Card 
                   key={car.id}
                   brand={car.brand}
