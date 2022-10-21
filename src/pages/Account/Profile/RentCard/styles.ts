@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { pxToRem } from "../../../../styles/utils/pxToRem"
 
-export const AppointmentCard = styled.div`
+export const RentCard = styled.div`
   width: 100%;
   outline: none;
   
@@ -10,7 +10,7 @@ export const AppointmentCard = styled.div`
   gap: ${pxToRem(8)};
 `
 
-export const AppointmentCardContent = styled.div`
+export const RentCardContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@ export const AppointmentCardContent = styled.div`
   background: ${props => props.theme.colors.white.main};
 `
 
-export const AppointmentCardCarInfos = styled.div`
+export const RentCardCarInfos = styled.div`
   display: grid;
   grid-template-columns: auto;
   gap: ${pxToRem(8)} ${pxToRem(32)};
@@ -51,7 +51,7 @@ export const AppointmentCardCarInfos = styled.div`
   }
 `
 
-export const AppointmentCardImage = styled.div`
+export const RentCardImage = styled.div`
   display: flex;
   align-items: center;
   
@@ -60,7 +60,7 @@ export const AppointmentCardImage = styled.div`
   }
 `
 
-export const AppointmentCardFooter = styled.div`
+export const RentCardFooter = styled.div`
   padding: ${pxToRem(16)};
   background: ${props => props.theme.colors.white.main};
 

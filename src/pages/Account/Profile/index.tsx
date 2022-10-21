@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, memo } from 'react';
+  import React, { useEffect,  memo, useState } from 'react';
 import { AppBar } from '../../../components/AppBar';
 import { Layout } from '../../../components/Layout';
 
@@ -6,43 +6,44 @@ import * as S from './styles'
 
 import { Avatar } from './Avatar';
 import { Tabs } from './Tabs';
-import { AppointmentCard } from './AppointmentCard';
+import { RentCard } from './RentCard';
 import { useAuth } from '../../../hooks/contexts/useAuth';
+import { api } from '../../../services/api';
 
-export const appointment = {
-  id: "666e65d6-5604-4ad9-a5ec-277246036a1e",
-  start_date: "2022-05-21T00:29:00.949Z",
-  end_date: "2022-05-23T00:29:36.981Z",
-  expected_return_date: "2022-05-24T15:52:05.880Z",
-  total: "200",
-  car: {
-    name: "Audi A3",
-    brand: "Audi",
-    daily_rate: "100",
-  }
+type Car = {
+  name: string
+  brand: string
+  daily_rate: string
 }
 
-export type Appointment = typeof appointment
+export type Rent = {
+  id: string
+  start_date: Date
+  end_date: Date
+  expected_return_date: Date
+  total: string
+  car: Car
+}
 
 const Profile: React.FC = () => {
-  const appointments = useMemo(() => {
-    const array = []
-    
-    for (let i=0; i<20; i++) {
-      array.push({
-        ...appointment,
-        id: appointment.id + i
-      })
-    }
-
-    return array
-  }, [])
+  const [rentals, setRentals] = useState<Rent[]>([])
 
   const { user, getUserProfile } = useAuth()
+
+  async function getUserRentals () {
+    try {
+      const { data } = await api.get('rentals/user')
+
+      setRentals(data)
+    } catch (error) {
+      console.log('Não foi possível buscar os aluguéis!')
+    }
+  }
 
   useEffect(() => {
     (async () => {
       await getUserProfile()
+      await getUserRentals()
     })()
   }, [])
 
@@ -69,10 +70,11 @@ const Profile: React.FC = () => {
             <h1>Agendamentos feitos</h1>
 
             <S.AppointmentsList>
-              {appointments.map(appointment => 
-                <AppointmentCard 
-                  key={appointment.id}  
-                  appointment={appointment}/>
+              {rentals.map(rent => 
+                <RentCard
+                  key={rent.id}  
+                  rent={rent}
+                />
               )}
             </S.AppointmentsList>
           </S.ProfileAppointments>
