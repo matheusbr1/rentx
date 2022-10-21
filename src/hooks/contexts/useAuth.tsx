@@ -4,14 +4,12 @@ import { destroyCookie, setCookie } from 'nookies'
 import usePersistedState from '../usePersistedState'
 import { HeadersDefaults } from 'axios'
 
-type User = {
+export type User = {
   email: string
   name: string
   driver_license: string
   avatar_URL: string
 }
-
-type ProfileRequestResponse = User
 
 export type SignInCreadentials = {
   email: string
@@ -31,7 +29,6 @@ interface IAuthContext {
   signUp(fields: SignUpFields): Promise<void>
   isAuthenticated: boolean
   user: User | null
-  getUserProfile(): Promise<void>
 }
 
 interface ProviderProps {
@@ -105,34 +102,13 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
     setUser(null)
   }
 
-  async function getUserProfile () {
-    try {
-      const { data } = await api.get<ProfileRequestResponse>('users/profile')
-
-      console.log(data)
-
-      const userProfile: User = {
-        name: data.name,
-        email: data.email,
-        avatar_URL: data.avatar_URL,
-        driver_license: data.driver_license,
-      }
-
-      setUser(userProfile)
-    } catch (error) {
-      // Snack Erro
-      console.log('Ocorreu um erro ao buscar o perfil!')
-    }
-  }
-
   return (
     <AuthContext.Provider value={{ 
       signIn, 
       signOut,
       signUp,
       isAuthenticated,
-      user,
-      getUserProfile
+      user
     }}>
       {children}
     </AuthContext.Provider>

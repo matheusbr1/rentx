@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { queryClient } from '../../../../App'
 import { api } from '../../../../services/api'
 
 import * as S from './styles'
@@ -39,9 +40,9 @@ const Avatar: React.FC<AvatarProps> = ({ imageSource, name }) =>  {
               }
             })
 
-            // Refetch profile
-
             console.log('Avatar alterado com sucesso!')
+
+            queryClient.invalidateQueries(['profile'])
           } catch (error) {
             console.log('Não foi possível alterar o avatar, tente novamente!')
           } finally {

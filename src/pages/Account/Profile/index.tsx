@@ -1,4 +1,4 @@
-  import React, { useEffect,  memo, useState } from 'react';
+  import React, { memo } from 'react';
 import { AppBar } from '../../../components/AppBar';
 import { Layout } from '../../../components/Layout';
 
@@ -7,9 +7,8 @@ import * as S from './styles'
 import { Avatar } from './Avatar';
 import { Tabs } from './Tabs';
 import { RentCard } from './RentCard';
-import { useAuth } from '../../../hooks/contexts/useAuth';
-import { api } from '../../../services/api';
 import { Car } from '../../Cars/List';
+import { useProfile, useUserRentals } from '../../../fetchs';
 
 export type Rent = {
   id: string
@@ -21,26 +20,8 @@ export type Rent = {
 }
 
 const Profile: React.FC = () => {
-  const [rentals, setRentals] = useState<Rent[]>([])
-
-  const { user, getUserProfile } = useAuth()
-
-  async function getUserRentals () {
-    try {
-      const { data } = await api.get('rentals/user')
-
-      setRentals(data)
-    } catch (error) {
-      console.log('Não foi possível buscar os aluguéis!')
-    }
-  }
-
-  useEffect(() => {
-    (async () => {
-      await getUserProfile()
-      await getUserRentals()
-    })()
-  }, [])
+  const { data: profile } = useProfile()
+  const { data: rentals = [] } = useUserRentals()
 
   return (
     <Layout
@@ -50,8 +31,8 @@ const Profile: React.FC = () => {
         <S.LeftSide>
           <S.ProfileEdition>
             <Avatar 
-              imageSource={user?.avatar_URL}
-              name={user?.name}
+              imageSource={profile?.avatar_URL}
+              name={profile?.name}
             />
 
             <Tabs />
