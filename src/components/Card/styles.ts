@@ -6,12 +6,16 @@ import * as SeparatorPrimitive from '@radix-ui/react-separator';
 export const CardContainer = styled.div`
   padding: ${pxToRem(16)};
   width: 100%;
+  height: 100%;
   border: 2px solid;
   border-color: transparent;
   outline: none;
   background: inherit;
 
   transition: all 0.4s;
+
+  display: flex;
+  flex-direction: column;
 
   :hover {
     border-color: ${props => props.theme.colors.red.main}
@@ -22,6 +26,7 @@ export const CardContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
 
   img {
     width: 80%;

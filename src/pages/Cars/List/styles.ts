@@ -3,10 +3,6 @@ import { pxToRem } from "../../../styles/utils/pxToRem";
 
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
-export const CarListWrapper = styled.div`
-
-`
-
 export const TitleRow = styled.div`
   width: 100%;
 
@@ -56,5 +52,11 @@ export const GridContainer = styled.div`
 export const GridItem = styled.div`
   background: ${props => props.theme.colors.white.main};
   border: 1px solid ${props => props.theme.colors.gray[100]};
+  display: flex;
+  align-items: center;
+  > a {
+    flex: 1;
+    height: 100%;
+  }
 `
 

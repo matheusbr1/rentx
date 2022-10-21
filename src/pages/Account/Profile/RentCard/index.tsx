@@ -30,13 +30,11 @@ export const RentCard: React.FC<RentCardProps> = ({ rent }) => {
           <h1>{rent.car.name}</h1>
           
           <p>AO DIA</p>
-          <h2>
-            {formatCurrency(rent.car.daily_rate)}
-          </h2>
+          <h2> {formatCurrency(rent.car.daily_rate)} </h2>
         </S.RentCardCarInfos>
 
         <S.RentCardImage>
-          <img src="/assets/Audi.svg" alt="Audi" />
+          <img src={rent.car.images[0]?.image_URL} alt={rent.car.brand} />
         </S.RentCardImage>
       </S.RentCardContent>
 

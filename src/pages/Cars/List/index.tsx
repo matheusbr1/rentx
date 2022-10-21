@@ -6,8 +6,21 @@ import { Layout } from '../../../components/Layout';
 import { api } from '../../../services/api';
 import * as S from './styles';
 
+type CarImage = {
+  id: string
+  image_URL: string
+}
+
+type Car = {
+  id: string
+  name: string
+  daily_rate: string
+  brand: string
+  images: CarImage[]
+}
+
 const CarsList: React.FC = () => {
-  const [cars, setCars] = useState([])
+  const [cars, setCars] = useState<Car[]>([])
 
   useEffect(() => {
     if (!cars.length) {
@@ -20,7 +33,7 @@ const CarsList: React.FC = () => {
     <Layout
       appBarComponent={<AppBar title='Início' />}
     >
-      <S.CarListWrapper>
+      <>
         <S.TitleRow>
           <h1>Carros disponíveis</h1>
           <p>Total 12 carros</p>
@@ -29,20 +42,21 @@ const CarsList: React.FC = () => {
         <S.Separator decorative orientation="horizontal" />
 
         <S.GridContainer>
-          {cars.map((car: any) => (
+          {cars.map((car: Car) => (
             <S.GridItem>
               <Link to='/cars/detail' >
                 <Card 
                   key={car.id}
-                  brand='AUDI'
-                  model='RS 5 Coupé'
-                  price={640}
+                  brand={car.brand}
+                  model={car.name}
+                  daily_rate={car.daily_rate}
+                  image_URL={car.images[0]?.image_URL}
                 />
               </Link>
             </S.GridItem>
           ))}
         </S.GridContainer>
-      </S.CarListWrapper>
+      </>
     </Layout>
   )
 }
