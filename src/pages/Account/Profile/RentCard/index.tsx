@@ -37,4 +37,3 @@ export const RentCard: React.FC<RentCardProps> = ({ rent }) => (
     </S.RentCardFooter>
   </S.RentCard>
 )
-

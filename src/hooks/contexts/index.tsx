@@ -1,15 +1,18 @@
 import React from 'react'
 
 import { AuthProvider } from './useAuth'
+import { RentProvider } from './useRent'
 
 interface ProviderProps {
   children: React.ReactNode
 }
 
 const AppProvider: React.FC<ProviderProps> = ({ children }) => (
-    <AuthProvider>
+  <AuthProvider>
+    <RentProvider>
       {children}
-    </AuthProvider>
+    </RentProvider>
+  </AuthProvider>
 )
 
 export { AppProvider }

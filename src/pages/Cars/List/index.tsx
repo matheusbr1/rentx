@@ -4,6 +4,7 @@ import { AppBar } from '../../../components/AppBar';
 import { Card } from '../../../components/Card';
 import { Layout } from '../../../components/Layout';
 import { useCars } from '../../../fetchs';
+import { useRent } from '../../../hooks/contexts/useRent';
 import * as S from './styles';
 
 export type CarImage = {
@@ -29,6 +30,7 @@ export type Car = {
 
 const CarsList: React.FC = () => {
    const { data = [] } = useCars()
+   const { setSelectedCar } = useRent()
 
   return (
     <Layout
@@ -45,7 +47,9 @@ const CarsList: React.FC = () => {
         <S.GridContainer>
           {data?.map((car: Car) => (
             <S.GridItem key={car.id} >
-              <Link to={`/cars/detail/${car.id}`} >
+              <Link to={`/cars/detail/${car.id}`} onClick={() => {
+                setSelectedCar(car)
+              }} >
                 <Card 
                   key={car.id}
                   brand={car.brand}

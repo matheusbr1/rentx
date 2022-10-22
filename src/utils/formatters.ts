@@ -1,8 +1,9 @@
 export function formatDate (date: Date | null) {
   if (!date) return
+  const timestamp = new Date(date).getTime()
   return new Intl.DateTimeFormat('pt-BR', { 
     dateStyle: 'medium',
-  }).format(date)
+  }).format(timestamp)
 }
 
 export function formatCurrency (value: string | undefined) {

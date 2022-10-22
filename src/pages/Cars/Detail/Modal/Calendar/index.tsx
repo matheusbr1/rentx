@@ -1,19 +1,17 @@
 import React from 'react';
 import PrimitiveCalendar from 'react-calendar'
+import { useRent } from '../../../../../hooks/contexts/useRent';
 
 import * as S from './styles'
 
-interface CalendarProps {
-  date: Date
-  setDate: (dateRange: Date) => void
-}
+const Calendar: React.FC = () => {
+  const { period, setPeriod } = useRent()
 
-const Calendar: React.FC<CalendarProps> = ({ date, setDate }) => {
   return (
     <S.CalendarWrapper>
       <PrimitiveCalendar 
-        onChange={setDate} 
-        value={date} 
+        onChange={setPeriod} 
+        value={period as  any} 
         selectRange={true}
         locale='pr-BR' 
         allowPartialRange={false}

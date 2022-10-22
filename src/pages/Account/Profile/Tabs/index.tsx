@@ -13,11 +13,15 @@ const Tabs: React.FC = () => {
   return (
     <S.Tabs defaultValue="tab-0" >
       <S.List>
-        {tabsArr.map((tab, idx) => <S.Trigger value={'tab-' + idx}>{tab.label}</S.Trigger>)}
+        {tabsArr.map((tab, idx) => (
+          <S.Trigger value={'tab-' + idx} key={idx}>
+            {tab.label}
+          </S.Trigger>
+        ))}
       </S.List>
 
       {tabsArr.map((Tab, idx) => (
-        <S.Content value={'tab-' + idx} >
+        <S.Content value={'tab-' + idx} key={idx} >
           <Tab.content />
         </S.Content>
       ))}

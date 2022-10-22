@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './styles'
 import { Button } from '../../../../../components/Button';
 import { formatDate } from '../../../../../utils/formatters';
+import { useRent } from '../../../../../hooks/contexts/useRent';
 
 interface InfoProps {
   title: string
@@ -16,32 +17,35 @@ export const Info: React.FC<InfoProps> = ({ title, value }) => (
 )
 
 interface SelectedRangeProps {
-  date: Date[]
   onConfirm: () => void
 }
 
-const SelectedRange: React.FC<SelectedRangeProps> = ({ date, onConfirm }) => (
-  <S.SelectedRangeDateWrapper>
-    {date.length > 0 ? (
-      <div>
-        <Info title='De' value={formatDate(date[0]) || 'Selecione a data'} />
-        <Info title='Até' value={formatDate(date[1]) || 'Selecione a data'}/>
-      </div>
-    ) : (
-      <div>
-        <Info title='De' value='Selecione a data' />
-        <Info title='Até' value='Selecione a data' />
-      </div>
-    )}
+const SelectedRange: React.FC<SelectedRangeProps> = ({ onConfirm }) => {
+  const { period, isPeriodSelected } = useRent()
 
-    <Button 
-      width='full' 
-      onClick={onConfirm}
-      disabled={!(date.length > 0)}
-    >
-      Confirmar
-    </Button>
-  </S.SelectedRangeDateWrapper>
-)
+  return (
+    <S.SelectedRangeDateWrapper>
+      {isPeriodSelected ? (
+        <div>
+          <Info title='De' value={formatDate(period[0]) || 'Selecione a data'} />
+          <Info title='Até' value={formatDate(period[1]) || 'Selecione a data'}/>
+        </div>
+      ) : (
+        <div>
+          <Info title='De' value='Selecione a data' />
+          <Info title='Até' value='Selecione a data' />
+        </div>
+      )}
+  
+      <Button 
+        width='full' 
+        onClick={onConfirm}
+        disabled={!isPeriodSelected}
+      >
+        Confirmar
+      </Button>
+    </S.SelectedRangeDateWrapper>
+  )
+}
 
 export { SelectedRange }

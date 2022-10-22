@@ -46,7 +46,7 @@ const Profile: React.FC = () => {
             <h1>Agendamentos feitos</h1>
 
             <S.AppointmentsList>
-              {rentals.map(rent => 
+              {rentals?.map(rent => 
                 <RentCard
                   key={rent.id}  
                   rent={rent}
