@@ -1,24 +1,25 @@
 import React from 'react';
+import { Specification } from '../../List';
 
 import * as S from './styles';
 
 export interface SpecCardProps {
-  text: string
-  image: string
+  specification: Specification
 }
 
-const SpecCard: React.FC<SpecCardProps> = ({ text, image }) => {
-  return (
-    <S.SpecCardContainer>
-      <S.SpecCardImage>
-        <img src={image} alt={text} />
-      </S.SpecCardImage>
+const SpecCard: React.FC<SpecCardProps> = ({ specification }) => (
+  <S.SpecCardContainer>
+    <S.SpecCardImage>
+      <img 
+        src={`/assets/CarSpecsImages/${specification.name}.svg`} 
+        alt={specification.name} 
+      />
+    </S.SpecCardImage>
 
-      <S.SpecCardText>
-        <p>{text}</p>
-      </S.SpecCardText>
-    </S.SpecCardContainer>
-  )
-}
+    <S.SpecCardText>
+      <p>{specification.description}</p>
+    </S.SpecCardText>
+  </S.SpecCardContainer>
+)
 
 export { SpecCard }

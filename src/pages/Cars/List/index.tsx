@@ -11,6 +11,12 @@ export type CarImage = {
   image_URL: string
 }
 
+export type Specification = {
+  id: string
+  name: string
+  description: string
+}
+
 export type Car = {
   id: string
   name: string
@@ -18,6 +24,7 @@ export type Car = {
   daily_rate: string
   brand: string
   images: CarImage[]
+  specifications: Specification[]
 }
 
 const CarsList: React.FC = () => {

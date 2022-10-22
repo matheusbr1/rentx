@@ -9,7 +9,7 @@ import * as S from './styles';
 import { Tabs } from './Tabs';
 import { Modal } from './Modal';
 import { useCars } from '../../../fetchs';
-import { Car, CarImage } from '../List';
+import { Car, CarImage, Specification } from '../List';
 
 export const car = {
   images: [
@@ -17,13 +17,10 @@ export const car = {
     { id: '2', image_URL: "/assets/Audi.svg" },
   ] as CarImage[],
   specifications: [
-    { img: '/assets/SpeedSpec.svg', text: '270km/h' },
-    { img: '/assets/SpeedSpec.svg', text: '6.8s' },
-    { img: '/assets/SpeedSpec.svg', text: 'Gasolina' },
-    { img: '/assets/SpeedSpec.svg', text: 'Auto' },
-    { img: '/assets/SpeedSpec.svg', text: '5 pessoas' },
-    { img: '/assets/SpeedSpec.svg', text: '280 HP' },
-  ]
+    { id: '1', name: 'max-speed', description: '270km/h' },
+    { id: '2', name: 'seats', description: '5 Pessoas' },
+    { id: '3', name: 'fuel', description: 'Gasolina' },
+  ] as Specification[]
 }
 
 const CarDetail: React.FC = () => {
@@ -80,11 +77,10 @@ const CarDetail: React.FC = () => {
 
         <S.CarDetailsWrapper>
           <S.CarSpecCardWrapper>
-            {car.specifications.map(spec => (
+            {selectedCar.specifications.map(specification => (
               <SpecCard 
-                image={spec.img}
-                text={spec.text}
-                key={spec.text} 
+                key={specification.id}
+                specification={specification}
               />
             ))}
           </S.CarSpecCardWrapper>
