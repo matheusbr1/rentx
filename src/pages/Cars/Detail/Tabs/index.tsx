@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useRent } from "../../../../hooks/contexts/useRent";
 import { formatCurrency, formatDate } from "../../../../utils/formatters";
 

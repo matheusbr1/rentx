@@ -6,7 +6,8 @@ interface IRentContext {
   period: Date[]
   setPeriod: (period: Date[] | null) => void
   selectedCar: Car | null
-  setSelectedCar: (car: Car) => void
+  setSelectedCar: (car: Car | null) => void
+  resetRent(): void
 }
 
 interface ProviderProps {
@@ -21,9 +22,10 @@ const RentProvider: React.FC<ProviderProps> = ({ children }) => {
 
   const [selectedCar, setSelectedCar] = useState<Car | null>(null)
 
-  useEffect(() => {
+  function resetRent () {
+    setSelectedCar(null)
     setPeriod(null)
-  }, [selectedCar])
+  }
 
   return (
     <RentContext.Provider value={{ 
@@ -32,6 +34,7 @@ const RentProvider: React.FC<ProviderProps> = ({ children }) => {
       setPeriod,
       selectedCar,
       setSelectedCar,
+      resetRent
     }}>
       {children}
     </RentContext.Provider>

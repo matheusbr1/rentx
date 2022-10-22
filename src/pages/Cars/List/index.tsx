@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar } from '../../../components/AppBar';
 import { Card } from '../../../components/Card';
@@ -30,7 +30,11 @@ export type Car = {
 
 const CarsList: React.FC = () => {
    const { data = [] } = useCars()
-   const { setSelectedCar } = useRent()
+   const { setSelectedCar, resetRent } = useRent()
+
+   useEffect(() => {
+    resetRent()
+   }, [])
 
   return (
     <Layout

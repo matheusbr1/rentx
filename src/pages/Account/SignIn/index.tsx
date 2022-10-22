@@ -12,6 +12,7 @@ import * as yup from 'yup'
 import * as S from './styles'
 
 import { SignInCreadentials, useAuth } from '../../../hooks/contexts/useAuth';
+import { useRent } from '../../../hooks/contexts/useRent';
 
 const schema = yup.object({
   email: yup.string()
@@ -26,6 +27,8 @@ const SignIn: React.FC = () => {
   const { push } = useHistory()
 
   const { signIn } = useAuth()
+
+  const { selectedCar } = useRent()
   
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignInCreadentials>({
     resolver: yupResolver(schema),
@@ -35,7 +38,10 @@ const SignIn: React.FC = () => {
   const onSubmit: SubmitHandler<SignInCreadentials> = async fields => {
     try {
       await signIn(fields)
-      push('/account/profile')  
+
+      !!selectedCar 
+        ? push('/cars/detail/' + selectedCar.id)  
+        : push('/account/profile') 
     } catch (error) {
       // do nothing
     }

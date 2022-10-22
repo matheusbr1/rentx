@@ -6,7 +6,7 @@ import * as S from './styles';
 
 const menuItems = [
   { imageName: 'Carros', link: '/cars/list', activeInPath: '/cars', icon: 'car' },
-  { imageName: 'Perfil', link: '/account/signIn', activeInPath: '/account', icon: 'profile' },
+  { imageName: 'Perfil', link: '/account/profile', activeInPath: '/account', icon: 'profile' },
 ]
 
 type Icon = 'profile' | 'car'

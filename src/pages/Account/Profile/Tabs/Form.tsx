@@ -9,15 +9,7 @@ import * as yup from 'yup'
 
 import * as S from './styles'
 import { api } from '../../../../services/api';
-import { useAuth } from '../../../../hooks/contexts/useAuth';
-
-async function fakeRequest(time: number, error?: boolean) {
-  return new Promise((resolve, reject) => {
-    return setTimeout(() => {
-      error ? reject(null) :  resolve(null)
-    }, time)
-  })
-}
+import { useProfile } from '../../../../fetchs';
 
 const profileDataSchema = yup.object({
   name: yup.string()
@@ -37,15 +29,15 @@ interface DataFormFiels {
 }
 
 export const ChangeDataForm: React.FC = () => {
-  const { user } = useAuth()
+  const { data } = useProfile()
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<DataFormFiels>({ 
     resolver: yupResolver(profileDataSchema),
     shouldFocusError: true,
     defaultValues: {
-      driver_license: user?.driver_license,
-      name: user?.name,
-      email: user?.email
+      driver_license: data?.driver_license,
+      name: data?.name,
+      email: data?.email
     }
    })
 
