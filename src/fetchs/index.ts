@@ -38,7 +38,7 @@ export function useProfile () {
 export function useUserRentals () {
   return useQuery<Rent[]>(
     ["rentals"], 
-    () => api.get('rentals/user').then((res) =>  res.data),
+    () => api.get('rentals/user').then((res) => res.data.reverse()),
     {  staleTime:  staleTimes.OneDay }
   );
 }

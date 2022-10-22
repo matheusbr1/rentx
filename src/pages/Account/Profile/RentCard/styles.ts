@@ -1,3 +1,4 @@
+import { darken } from "polished"
 import styled from "styled-components"
 import { pxToRem } from "../../../../styles/utils/pxToRem"
 
@@ -62,6 +63,7 @@ export const RentCardImage = styled.div`
 
 export const RentCardFooter = styled.div`
   padding: ${pxToRem(16)};
+  min-height: ${pxToRem(60)};
   background: ${props => props.theme.colors.white.main};
 
   display: flex;
@@ -92,7 +94,54 @@ export const RentCardFooter = styled.div`
       font-weight: 500;
       font-size: ${pxToRem(16)};
       line-height: ${pxToRem(20)};
-      color: ${props => props.theme.colors.gray[600]
+      color: ${props => props.theme.colors.gray[600]};
+    }
+  }
+`
+
+export const RentCardRentInProgress = styled.div`
+  min-height: ${pxToRem(60)};
+  padding: ${pxToRem(16)};
+  background: ${props => props.theme.colors.white.main};
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: ${pxToRem(16)};
+
+  > p {
+    font-family: 'Archivo';
+    font-weight: 500;
+    font-size: ${pxToRem(14)};
+    line-height: ${pxToRem(15)};
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: ${props => props.theme.colors.gray[400]};
+  }
+
+  button {
+    padding: ${pxToRem(4)} ${pxToRem(20)};
+
+    background: ${props => props.theme.colors.green.main};
+    color: ${props => props.theme.colors.white.main};
+
+    border: 1px solid;
+    border-color: ${props => props.theme.colors.gray[300]};
+    
+    font-style: normal;
+    font-weight: 500;
+    font-size: ${pxToRem(16)};
+    line-height: ${pxToRem(20)};
+
+    transition: all 0.4s;
+
+    &:hover { 
+      border-color: ${props => props.theme.colors.gray[800]};
+      background: ${props => darken(0.15, props.theme.colors.green.main)}
+    }
+
+    &:focus {
+      border-color: ${({ theme }) => theme.colors.gray[800]};
     }
   }
 `

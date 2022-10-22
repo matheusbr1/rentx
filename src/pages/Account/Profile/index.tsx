@@ -9,6 +9,8 @@ import { Tabs } from './Tabs';
 import { RentCard } from './RentCard';
 import { Car } from '../../Cars/List';
 import { useProfile, useUserRentals } from '../../../fetchs';
+import { api } from '../../../services/api';
+import { queryClient } from '../../../App';
 
 export type Rent = {
   id: string
@@ -22,6 +24,19 @@ export type Rent = {
 const Profile: React.FC = () => {
   const { data: profile } = useProfile()
   const { data: rentals = [] } = useUserRentals()
+
+  async function handleDevolution (rentId: string) {
+    try {
+      await api.post(`/rentals/devolution/${rentId}`)
+
+      console.log('Aluguél finalizado com sucesso!')
+
+      queryClient.refetchQueries(['rentals'])
+      queryClient.refetchQueries(['cars'])
+    } catch (error) {
+      console.log('Ocorreu um erro ao finalizar o aluguél!!')
+    }
+  }
 
   return (
     <Layout
@@ -50,6 +65,7 @@ const Profile: React.FC = () => {
                 <RentCard
                   key={rent.id}  
                   rent={rent}
+                  onDevolution={handleDevolution}
                 />
               )}
             </S.AppointmentsList>

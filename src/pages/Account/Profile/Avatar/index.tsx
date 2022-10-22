@@ -42,7 +42,7 @@ const Avatar: React.FC<AvatarProps> = ({ imageSource, name }) =>  {
 
             console.log('Avatar alterado com sucesso!')
 
-            queryClient.invalidateQueries(['profile'])
+            queryClient.refetchQueries(['profile'])
           } catch (error) {
             console.log('Não foi possível alterar o avatar, tente novamente!')
           } finally {

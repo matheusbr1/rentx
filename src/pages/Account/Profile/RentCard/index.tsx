@@ -6,9 +6,10 @@ import * as S from './styles';
 
 export interface RentCardProps {
   rent: Rent
+  onDevolution: (rentId: string) => void
 }
 
-export const RentCard: React.FC<RentCardProps> = ({ rent }) => (
+export const RentCard: React.FC<RentCardProps> = ({ rent, onDevolution }) => (
   <S.RentCard>
     <S.RentCardContent>
       <S.RentCardCarInfos>
@@ -35,5 +36,13 @@ export const RentCard: React.FC<RentCardProps> = ({ rent }) => (
         <p> {formatDate(rent.end_date || rent.expected_return_date)} </p>
       </div>
     </S.RentCardFooter>
+
+    {!rent.total && (
+      <S.RentCardRentInProgress>
+        <p>Aluguél em andamento</p>
+
+        <button onClick={() => onDevolution(rent.id)} > Devolver </button>
+      </S.RentCardRentInProgress>
+    )}
   </S.RentCard>
 )

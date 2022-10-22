@@ -43,7 +43,7 @@ const CarsList: React.FC = () => {
       <>
         <S.TitleRow>
           <h1>Carros disponíveis</h1>
-          <p>Total 12 carros</p>
+          <p>Total {data.length} carros</p>
         </S.TitleRow>
 
         <S.Separator decorative orientation="horizontal" />

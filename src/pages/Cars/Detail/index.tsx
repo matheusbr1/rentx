@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../../components/Button'
 import { Link, useHistory } from 'react-router-dom';
 import { Layout } from '../../../components/Layout';
@@ -10,16 +10,34 @@ import { Tabs } from './Tabs';
 import { Modal } from './Modal';
 import { formatCurrency } from '../../../utils/formatters';
 import { useRent } from '../../../hooks/contexts/useRent';
+import { api } from '../../../services/api';
+import { queryClient } from '../../../App';
 
 const CarDetail: React.FC = () => {
   const { push } = useHistory()
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { isPeriodSelected, selectedCar } = useRent()
+  const { isPeriodSelected, selectedCar, period } = useRent()
 
   if (!selectedCar) {
     push('/cars/list')
+  }
+
+  async function rentCar() {
+    try {
+      await api.post('/rentals', {
+        car_id: selectedCar?.id,
+	      expected_return_date: isPeriodSelected ? period[1] : null
+      })
+
+      push('/cars/rented')
+
+      queryClient.invalidateQueries(['cars'])
+      queryClient.invalidateQueries(['rentals'])
+    } catch (error) {
+      console.log('Ocorreu um erro ao alugar esse carro!')
+    }
   }
 
   return (
@@ -57,7 +75,7 @@ const CarDetail: React.FC = () => {
           <Tabs onOpenCalendar={() => setIsModalOpen(true)} />
 
           {isPeriodSelected ? (
-            <Button variant='success' width='full' onClick={() => push('/cars/rented')} >
+            <Button variant='success' width='full' onClick={rentCar} >
               Alugar agora
             </Button>
           ) : (
