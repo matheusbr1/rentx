@@ -10,6 +10,7 @@ import { Tabs } from './Tabs';
 import { Modal } from './Modal';
 import { useCars } from '../../../fetchs';
 import { Car, CarImage, Specification } from '../List';
+import { formatCurrency } from '../../../utils/formatters';
 
 export const car = {
   images: [
@@ -43,15 +44,6 @@ const CarDetail: React.FC = () => {
 
   const [isPeriodSelected, setIsPeriodSelected] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  
-  function formatCurrency (value: string | undefined) {
-    if (!value) return
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL', 
-      minimumFractionDigits: 0
-    }).format(Number(value))
-  }
 
   return (
     <Layout>
@@ -77,7 +69,7 @@ const CarDetail: React.FC = () => {
 
         <S.CarDetailsWrapper>
           <S.CarSpecCardWrapper>
-            {selectedCar.specifications.map(specification => (
+            {selectedCar?.specifications.map(specification => (
               <SpecCard 
                 key={specification.id}
                 specification={specification}
@@ -87,7 +79,7 @@ const CarDetail: React.FC = () => {
 
           <Tabs 
             onOpenCalendar={() => setIsModalOpen(true)}
-            carDescription={selectedCar.description}
+            carDescription={selectedCar?.description}
           />
 
           {isPeriodSelected ? (

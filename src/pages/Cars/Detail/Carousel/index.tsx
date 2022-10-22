@@ -39,7 +39,7 @@ const Carousel: React.FC<CarouselProps> = ({ images = [] }) => (
     dot={CarouselDot}
   >
     {images.map(image => (
-      <ReactCarousel.Item>
+      <ReactCarousel.Item key={image.id} >
         <CarouselImageWrapper>
           <img width="85%" src={image.image_URL} />
         </CarouselImageWrapper>

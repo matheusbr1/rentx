@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
+import { formatCurrency, formatDate } from "../../../../utils/formatters";
 
 import * as S from './styles'
 
@@ -19,6 +20,43 @@ interface TabsProps {
   carDescription: string
 }
 
+interface RentalPeriodProps {
+  onOpenCalendar: () => void
+}
+
+const RentalPeriod: React.FC<RentalPeriodProps> = ({ onOpenCalendar }) => {
+  const initialDate = null
+  const finalDate = null
+
+  const [total, setTotal] = useState('0')
+  const [dailyRate] = useState('500')
+  const [dailyAmount] = useState('0')
+
+  const totalDescription = useMemo(() => {
+    return `${formatCurrency(dailyRate)} x diárias`
+  }, [dailyAmount])
+
+  return (
+    <>
+      <S.PeriodDataRow>
+        <Info title="De" value={formatDate(initialDate) || 'Selecione a data'} />
+        <Info title="Até" value={formatDate(finalDate) || 'Selecione a data'} />
+
+        <S.CalendarButton onClick={onOpenCalendar} >
+          <img src="/assets/calendar.svg" alt="Calendário" />
+        </S.CalendarButton>
+      </S.PeriodDataRow>
+      
+      <S.Separator />
+
+      <S.PeriodDataRow>
+        <Info title="Total" value={totalDescription} />
+        <p className="total_amount" >{formatCurrency(total)}</p>
+      </S.PeriodDataRow>
+    </>
+  )
+}
+
 const Tabs: React.FC<TabsProps> = ({ onOpenCalendar, carDescription }) => {
   return (
     <S.Tabs defaultValue="tab-1" >
@@ -28,28 +66,11 @@ const Tabs: React.FC<TabsProps> = ({ onOpenCalendar, carDescription }) => {
       </S.List>
 
       <S.Content value="tab-1" >
-        <p className="car_description" >
-          {carDescription}
-        </p>
+        <p className="car_description" > {carDescription} </p>
       </S.Content>
 
       <S.Content value="tab-2" >
-        <S.PeriodDataRow>
-          <Info title="De" value='18 Jul 2021' />
-          <Info title="Até" value='20 Jul 2021' />
-
-          <S.CalendarButton onClick={onOpenCalendar} >
-            <img src="/assets/calendar.svg" alt="Calendário" />
-          </S.CalendarButton>
-        </S.PeriodDataRow>
-        
-        <S.Separator />
-
-        <S.PeriodDataRow>
-          <Info title="Total" value='R$ 580 x3 diárias' />
-
-          <p className="total_amount" >R$ 2,900</p>
-        </S.PeriodDataRow>
+        <RentalPeriod onOpenCalendar={onOpenCalendar} />
       </S.Content>
     </S.Tabs>
   )

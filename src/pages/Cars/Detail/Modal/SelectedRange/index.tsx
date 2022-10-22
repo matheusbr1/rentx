@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styles'
 import { Button } from '../../../../../components/Button';
+import { formatDate } from '../../../../../utils/formatters';
 
 interface InfoProps {
   title: string
@@ -19,43 +20,28 @@ interface SelectedRangeProps {
   onConfirm: () => void
 }
 
-const SelectedRange: React.FC<SelectedRangeProps> = ({ date, onConfirm }) => {
-  console.log('date', date)
+const SelectedRange: React.FC<SelectedRangeProps> = ({ date, onConfirm }) => (
+  <S.SelectedRangeDateWrapper>
+    {date.length > 0 ? (
+      <div>
+        <Info title='De' value={formatDate(date[0]) || 'Selecione a data'} />
+        <Info title='Até' value={formatDate(date[1]) || 'Selecione a data'}/>
+      </div>
+    ) : (
+      <div>
+        <Info title='De' value='Selecione a data' />
+        <Info title='Até' value='Selecione a data' />
+      </div>
+    )}
 
-  return (
-    <S.SelectedRangeDateWrapper>
-      {date.length > 0 ? (
-        <div>
-          <Info 
-            title='De' 
-            value={new Intl.DateTimeFormat('pt-BR', { 
-              dateStyle: 'medium',
-            }).format(date[0])} 
-          />
-          
-          <Info 
-            title='Até' 
-            value={new Intl.DateTimeFormat('pt-BR', { 
-              dateStyle: 'medium' 
-            }).format(date[1])} 
-          />
-        </div>
-      ) : (
-        <div>
-          <Info title='De' value='Selecione a data' />
-          <Info title='Até' value='Selecione a data' />
-        </div>
-      )}
-
-      <Button 
-        width='full' 
-        onClick={onConfirm}
-        disabled={!(date.length > 0)}
-      >
-        Confirmar
-      </Button>
-    </S.SelectedRangeDateWrapper>
-  )
-}
+    <Button 
+      width='full' 
+      onClick={onConfirm}
+      disabled={!(date.length > 0)}
+    >
+      Confirmar
+    </Button>
+  </S.SelectedRangeDateWrapper>
+)
 
 export { SelectedRange }
