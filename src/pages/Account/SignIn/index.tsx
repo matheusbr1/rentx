@@ -13,6 +13,7 @@ import * as S from './styles'
 
 import { SignInCreadentials, useAuth } from '../../../hooks/contexts/useAuth';
 import { useRent } from '../../../hooks/contexts/useRent';
+import { queryClient } from '../../../App';
 
 const schema = yup.object({
   email: yup.string()
@@ -38,6 +39,8 @@ const SignIn: React.FC = () => {
   const onSubmit: SubmitHandler<SignInCreadentials> = async fields => {
     try {
       await signIn(fields)
+
+      queryClient.fetchQuery(['profile'])
 
       !!selectedCar 
         ? push('/cars/detail/' + selectedCar.id)  

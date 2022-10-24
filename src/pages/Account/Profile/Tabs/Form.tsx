@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Button } from "../../../../components/Button";
 import { TextField } from "../../../../components/TextField";
@@ -10,6 +10,7 @@ import * as yup from 'yup'
 import * as S from './styles'
 import { api } from '../../../../services/api';
 import { useProfile } from '../../../../fetchs';
+import { Modal } from './Modal';
 
 const profileDataSchema = yup.object({
   name: yup.string()
@@ -41,11 +42,13 @@ export const ChangeDataForm: React.FC = () => {
     }
    })
 
+   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false)
+
    const onSubmit: SubmitHandler<DataFormFiels> = async fields => {
     try {
       await api.put('/users', fields)
 
-      console.log('Dados alterados com sucesso!')
+      setIsFeedbackModalOpen(true)
     } catch (error) {
       console.log('Ocorreu um erro ao realizar a alteração!')
     }
@@ -80,6 +83,11 @@ export const ChangeDataForm: React.FC = () => {
       <Button width="full" disabled={isSubmitting} >
         {isSubmitting ? 'Salvando...' : 'Salvar Alterações'}
       </Button>
+
+      <Modal 
+        open={isFeedbackModalOpen}
+        setIsOpen={setIsFeedbackModalOpen}
+      />
     </S.Form>
   )
 }
@@ -111,6 +119,8 @@ export const ChangePasswordForm: React.FC = () => {
     shouldFocusError: true
    })
 
+   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false)
+
    const onSubmit: SubmitHandler<ChangePasswordFields> = async (fields) => {
     try {
       const { data } = await api.post('/password/verify', { password: fields.current_password })
@@ -118,7 +128,7 @@ export const ChangePasswordForm: React.FC = () => {
       if (data.isCorrect) {
         await api.put('/users', fields)
 
-        console.log('Dados alterados com sucesso!')
+        setIsFeedbackModalOpen(true)
       } else {  
         setError('current_password', {
           message: 'Senha incorreta!',
@@ -163,6 +173,11 @@ export const ChangePasswordForm: React.FC = () => {
       <Button width="full" disabled={isSubmitting} >
         {isSubmitting ? 'Salvando...' : 'Salvar Alterações'}
       </Button>
+
+      <Modal 
+        open={isFeedbackModalOpen}
+        setIsOpen={setIsFeedbackModalOpen}
+      />
     </S.Form>
   )
 }

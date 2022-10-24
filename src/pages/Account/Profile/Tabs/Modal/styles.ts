@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { pxToRem } from '../../../../styles/utils/pxToRem'
+import { pxToRem } from '../../../../../styles/utils/pxToRem'
 import { darken } from 'polished';
 
 export const Root = styled(DialogPrimitive.Root)`
@@ -54,7 +54,7 @@ export const Content = styled(DialogPrimitive.Content)`
   max-width: 100vw;
   max-height: 100vh;
 
-  width: ${pxToRem(400)};
+  width: ${pxToRem(324)};
   height: ${pxToRem(448)};
   background: ${(props) => props.theme.colors.gray[800]};
 

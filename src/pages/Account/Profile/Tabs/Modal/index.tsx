@@ -16,8 +16,8 @@ const Modal: React.FC<ModalProps> = ({ setIsOpen, ...rest }) => (
         <img src='/assets/rentedCheck.svg' />
 
         <div>
-          <h1> Conta criada! </h1>
-          <p> Agora você parte da RentX. <br /> Seja bem-vindo(a).</p>
+          <h1> Feito! </h1>
+          <p> Agora sua informações <br /> foram atualizadas.</p>
         </div>
         
         <S.ConfirmationButton onClick={() => setIsOpen(false)} >
