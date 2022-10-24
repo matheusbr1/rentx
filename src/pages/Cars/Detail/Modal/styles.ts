@@ -41,7 +41,7 @@ export const Overlay = styled(DialogPrimitive.Overlay)`
 `
 
 export const Content = styled(DialogPrimitive.Content)`
-  z-index: 999;
+  z-index: 9999;
   background-color: white;
   box-shadow: 
     hsl(206 22% 7% / 35%) 0px 10px 38px -10px, 
@@ -69,8 +69,8 @@ export const Content = styled(DialogPrimitive.Content)`
 `
 
 export const Title = styled(DialogPrimitive.Title)`
-  background: #1B1B1F;
-  color: #FFFFFF;
+  background: ${props => props.theme.colors.gray[800]};
+  color: ${props => props.theme.colors.white.main};
   margin-top: -1px;
   padding: ${pxToRem(24)};
   
@@ -84,7 +84,7 @@ export const Title = styled(DialogPrimitive.Title)`
   align-items: center;
 
   > button {
-    color: #AEAEB3;
+    color: ${props => props.theme.colors.gray[400]};
     background: none;
     border: none;
     font-size: ${pxToRem(20)};

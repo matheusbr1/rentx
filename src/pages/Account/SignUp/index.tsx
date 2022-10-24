@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { AppBar } from '../../../components/AppBar';
@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 
 import * as S from './styles'
+import { Modal } from './Modal';
 
 const schema = yup.object({
   name: yup.string()
@@ -35,10 +36,14 @@ const SignUp: React.FC = () => {
     shouldFocusError: true
   })
 
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false)
+
   const onSubmit: SubmitHandler<SignUpFields> = async fields => {
     try {
       await signUp(fields)
-      push('/account/signIn')  
+
+      setIsFeedbackModalOpen(true)
+     
     } catch (error) {
       // do nothing
     }
@@ -103,6 +108,14 @@ const SignUp: React.FC = () => {
           <img src="/assets/Dodge.svg" alt="Carro Dodge" />
         </S.RightSide>
       </S.Content>
+
+      <Modal 
+        open={isFeedbackModalOpen}
+        setIsOpen={(open) => {
+          setIsFeedbackModalOpen(open)
+          push('/account/signIn')
+        }}
+      />
     </Layout>
   )
 }

@@ -2,8 +2,6 @@ import React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
 import * as S from './styles'
-import { Calendar } from './Calendar';
-import { SelectedRange } from './SelectedRange';
 
 export interface ModalProps extends DialogPrimitive.DialogProps {
   setIsOpen: (isOpen: boolean) => void
@@ -15,16 +13,16 @@ const Modal: React.FC<ModalProps> = ({ setIsOpen, ...rest }) => (
       <S.Overlay className='dialog-overlay' />
       
       <S.Content className='dialog-content' >
-        <S.Title>
-          Escolha uma data de início e fim do aluguel
-
-          <button onClick={() => setIsOpen(false)} >X</button>
-        </S.Title>
+        <img src='/assets/rentedCheck.svg' />
 
         <div>
-          <Calendar />
-          <SelectedRange onConfirm={() => setIsOpen(false)} />
+          <h1> Feito! </h1>
+          <p> Agora sua informações <br /> foram atualizadas.</p>
         </div>
+        
+        <S.ConfirmationButton onClick={() => setIsOpen(false)} >
+          Ok
+        </S.ConfirmationButton>
       
         <DialogPrimitive.Close style={{ display: 'contents' }} />
       </S.Content>

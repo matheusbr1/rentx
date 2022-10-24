@@ -15,7 +15,7 @@ export const AppBarContainer = styled.div`
   right: 0;
   left: ${logoSize};
 
-  z-index: 999;
+  z-index: 99;
 `
 
 export const AppBarContent = styled.div`
