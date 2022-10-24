@@ -11,6 +11,7 @@ import * as S from './styles'
 import { api } from '../../../../services/api';
 import { useProfile } from '../../../../fetchs';
 import { Modal } from './Modal';
+import toast from 'react-hot-toast';
 
 const profileDataSchema = yup.object({
   name: yup.string()
@@ -50,7 +51,7 @@ export const ChangeDataForm: React.FC = () => {
 
       setIsFeedbackModalOpen(true)
     } catch (error) {
-      console.log('Ocorreu um erro ao realizar a alteração!')
+      toast.error('Ocorreu um erro ao realizar a alteração!')
     }
    }
 
@@ -137,7 +138,7 @@ export const ChangePasswordForm: React.FC = () => {
         })
       }
     } catch (error) {
-      console.log('Ocorreu um erro ao realizar a alteração!')
+      toast.error('Ocorreu um erro ao realizar a alteração!')
     }
    }
 

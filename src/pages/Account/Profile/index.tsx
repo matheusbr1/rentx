@@ -11,6 +11,7 @@ import { Car } from '../../Cars/List';
 import { useProfile, useUserRentals } from '../../../fetchs';
 import { api } from '../../../services/api';
 import { queryClient } from '../../../App';
+import toast from 'react-hot-toast';
 
 export type Rent = {
   id: string
@@ -29,12 +30,12 @@ const Profile: React.FC = () => {
     try {
       await api.post(`/rentals/devolution/${rentId}`)
 
-      console.log('Aluguél finalizado com sucesso!')
+      toast.success('Aluguél finalizado com sucesso!')
 
       queryClient.refetchQueries(['rentals'])
       queryClient.refetchQueries(['cars'])
     } catch (error) {
-      console.log('Ocorreu um erro ao finalizar o aluguél!!')
+      toast.error('Ocorreu um erro ao finalizar o aluguél!!')
     }
   }
 

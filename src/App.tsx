@@ -11,6 +11,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast'
 
 // Create a client
 export const queryClient = new QueryClient()
@@ -19,6 +20,13 @@ function App() {
   return (
     // Provide the client to your App
     <QueryClientProvider client={queryClient}>
+      <Toaster position='bottom-center' toastOptions={{
+        style: {
+          background: defaultTheme.colors.gray[800],
+          color: 'white'
+        }
+      }} />
+
       <ThemeProvider theme={defaultTheme} >
         <AppProvider>
           <Routes />  

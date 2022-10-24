@@ -3,6 +3,7 @@ import { api } from '../../services/api'
 import { destroyCookie, setCookie } from 'nookies'
 import usePersistedState from '../usePersistedState'
 import { HeadersDefaults } from 'axios'
+import toast from 'react-hot-toast'
 
 export type User = {
   email: string
@@ -65,10 +66,10 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
       headers['Authorization'] = `Bearer ${data.token}`
 
       // Snack Sucesso
-      console.log('Login realizado com sucesso!')
+      toast.success("Login realizado com sucesso!")
     } catch (error) { 
       // Snack Erro
-      console.log('Ocorreu um erro ao realizar login!')
+      toast.error('Ocorreu um erro ao realizar login!')
 
       throw new Error()
     }
@@ -85,12 +86,9 @@ const AuthProvider: React.FC<ProviderProps> = ({ children }) => {
         password: password,
         driver_license: driver_license
       })
-
-      // Snack Sucesso
-      console.log('Conta criada com sucesso')    
     } catch (error) {
       // Snack Erro
-      console.log('Ocorreu um erro ao criar conta!')
+      toast.error('Ocorreu um erro ao criar conta!')
 
       throw new Error()
     }

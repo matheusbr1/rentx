@@ -12,6 +12,7 @@ import * as S from './styles'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { api } from '../../../services/api';
+import toast from 'react-hot-toast';
 
 const schema = yup.object({
   password: yup.string()
@@ -48,11 +49,11 @@ const ResetPassword: React.FC = () => {
         }
       })
 
-      console.log('Senha alterada com sucesso!')
+      toast.success('Senha alterada com sucesso!')
 
       push('/account/signin')
     } catch (error) {
-      console.log('Ocorreu um erro ao alterar a senha!')
+      toast.error('Ocorreu um erro ao alterar a senha!')
     }
   }
 

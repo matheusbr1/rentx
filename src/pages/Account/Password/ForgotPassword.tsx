@@ -11,6 +11,7 @@ import * as S from './styles'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { api } from '../../../services/api';
+import toast from 'react-hot-toast';
 
 const schema = yup.object({
   email: yup.string()
@@ -34,11 +35,11 @@ const ForgotPassword: React.FC = () => {
     try {
       await api.post('password/forgot', { email })
 
-      console.log('E-mail enviado com sucesso!')
+      toast.success('E-mail enviado com sucesso!')
 
       push('/account/signin')
     } catch (error) {
-      console.log('Ocorreu um erro ao enviar o email!')
+      toast.error('Ocorreu um erro ao enviar o email!')
     }
   }
 

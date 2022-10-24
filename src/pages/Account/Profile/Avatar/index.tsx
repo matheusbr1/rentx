@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import { queryClient } from '../../../../App'
 import { api } from '../../../../services/api'
 
@@ -40,11 +41,11 @@ const Avatar: React.FC<AvatarProps> = ({ imageSource, name }) =>  {
               }
             })
 
-            console.log('Avatar alterado com sucesso!')
+            toast.success('Avatar alterado com sucesso!')
 
             queryClient.refetchQueries(['profile'])
           } catch (error) {
-            console.log('Não foi possível alterar o avatar, tente novamente!')
+            toast.error('Não foi possível alterar o avatar, tente novamente!')
           } finally {
             setIsUploading(false)
           }

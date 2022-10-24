@@ -12,6 +12,7 @@ import { formatCurrency } from '../../../utils/formatters';
 import { useRent } from '../../../hooks/contexts/useRent';
 import { api } from '../../../services/api';
 import { queryClient } from '../../../App';
+import toast from 'react-hot-toast';
 
 const CarDetail: React.FC = () => {
   const { push } = useHistory()
@@ -36,7 +37,7 @@ const CarDetail: React.FC = () => {
       queryClient.invalidateQueries(['cars'])
       queryClient.invalidateQueries(['rentals'])
     } catch (error) {
-      console.log('Ocorreu um erro ao alugar esse carro!')
+      toast.error('Ocorreu um erro ao alugar esse carro!')
     }
   }
 
