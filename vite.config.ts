@@ -8,5 +8,12 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     include: ['**/*.spec.tsx'],
+    coverage: {
+      all: true,
+      exclude: [
+        '.storybook',
+        'src/fetchs',
+      ],
+    },
   },
 } as UserConfig)

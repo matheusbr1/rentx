@@ -1747,6 +1747,11 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
+"@polka/url@^1.0.0-next.20":
+  version "1.0.0-next.21"
+  resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
+  integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
+
 "@radix-ui/number@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/number/-/number-1.0.0.tgz#4c536161d0de750b3f5d55860fc3de46264f897b"
@@ -3829,6 +3834,26 @@
   dependencies:
     c8 "^7.12.0"
     vitest "0.24.3"
+
+"@vitest/coverage-istanbul@^0.24.3":
+  version "0.24.3"
+  resolved "https://registry.yarnpkg.com/@vitest/coverage-istanbul/-/coverage-istanbul-0.24.3.tgz#b8d45f50e438ecae288cc08e80fb1757b4732bde"
+  integrity sha512-cPQ5icP/TPih3qeZ29qA2zg1lxAM+wAUuh1ZkQJ75OK7am/8isqhP5QCCeGCLdFOakDsm4Ik8vHHfcDffuxW9Q==
+  dependencies:
+    istanbul-lib-coverage "^3.2.0"
+    istanbul-lib-instrument "^5.2.1"
+    istanbul-lib-report "^3.0.0"
+    istanbul-lib-source-maps "^4.0.1"
+    istanbul-reports "^3.1.5"
+    test-exclude "^6.0.0"
+    vitest "0.24.3"
+
+"@vitest/ui@^0.24.3":
+  version "0.24.3"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.24.3.tgz#8058e4c9b8a276fbfef1ef0907291f19694a722b"
+  integrity sha512-f5agYA/sdkiipq42TZayJoeUGjWx+opDjIVeNnb1SG2BNxqObFqh6GuJlzpGHerg4a2+ZSoVo4f4p2+dEyXPmg==
+  dependencies:
+    sirv "^2.0.2"
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -8449,7 +8474,7 @@ istanbul-lib-coverage@^3.0.0, istanbul-lib-coverage@^3.2.0:
   resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-3.2.0.tgz#189e7909d0a39fa5a3dfad5b03f71947770191d3"
   integrity sha512-eOeJ5BHCmHYvQK7xt9GkdHuzuCGS1Y6g9Gvnx3Ym33fz/HpLRYxiS0wHNr+m/MBC8B647Xt608vCDEvhl9c6Mw==
 
-istanbul-lib-instrument@^5.0.4:
+istanbul-lib-instrument@^5.0.4, istanbul-lib-instrument@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-5.2.1.tgz#d10c8885c2125574e1c231cacadf955675e1ce3d"
   integrity sha512-pzqtp31nLv/XFOzXGuvhCb8qhjmTVo5vjVk19XE4CRlSWz0KoeJ3bw9XsA7nOp9YBf4qHjwBxkDzKcME/J29Yg==
@@ -8469,7 +8494,16 @@ istanbul-lib-report@^3.0.0:
     make-dir "^3.0.0"
     supports-color "^7.1.0"
 
-istanbul-reports@^3.1.4:
+istanbul-lib-source-maps@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-source-maps/-/istanbul-lib-source-maps-4.0.1.tgz#895f3a709fcfba34c6de5a42939022f3e4358551"
+  integrity sha512-n3s8EwkdFIJCG3BPKBYvskgXGoy88ARzvegkitk60NxRdwltLOTaH7CUiMRXvwYorl0Q712iEjcWB+fK/MrWVw==
+  dependencies:
+    debug "^4.1.1"
+    istanbul-lib-coverage "^3.0.0"
+    source-map "^0.6.1"
+
+istanbul-reports@^3.1.4, istanbul-reports@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/istanbul-reports/-/istanbul-reports-3.1.5.tgz#cc9a6ab25cb25659810e4785ed9d9fb742578bae"
   integrity sha512-nUsEMa9pBt/NOHqbcbeJEgqIlY/K7rVWUX6Lql2orY5e9roQOthbR3vtY4zzf2orPELg80fnxxk9zUyPlgwD1w==
@@ -9359,6 +9393,11 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
+
+mrmime@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mrmime/-/mrmime-1.0.1.tgz#5f90c825fad4bdd41dc914eff5d1a8cfdaf24f27"
+  integrity sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==
 
 ms@2.0.0:
   version "2.0.0"
@@ -11436,6 +11475,15 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
+sirv@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/sirv/-/sirv-2.0.2.tgz#128b9a628d77568139cff85703ad5497c46a4760"
+  integrity sha512-4Qog6aE29nIjAOKe/wowFTxOdmbEZKb+3tsLljaBRzJwtqto0BChD2zzH0LhgCSXiI+V7X+Y45v14wBZQ1TK3w==
+  dependencies:
+    "@polka/url" "^1.0.0-next.20"
+    mrmime "^1.0.0"
+    totalist "^3.0.0"
+
 sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
@@ -12179,6 +12227,11 @@ toposort@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
   integrity sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==
+
+totalist@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/totalist/-/totalist-3.0.0.tgz#4ef9c58c5f095255cdc3ff2a0a55091c57a3a1bd"
+  integrity sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==
 
 tr46@~0.0.3:
   version "0.0.3"
