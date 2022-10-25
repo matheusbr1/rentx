@@ -8,12 +8,13 @@ describe('Button Component', () => {
       <Card 
         brand='Honda'
         model='Fit'
-        price={90000}
+        daily_rate='90000'        
+        image_URL='URL'
       />
     )
     
     expect(getByText('Honda')).toBeTruthy()
     expect(getByText('Fit')).toBeTruthy()
-    expect(getByText('R$ 90000')).toBeTruthy()
+    expect(getByText('R$ 90.000')).toBeTruthy()
   })
 })

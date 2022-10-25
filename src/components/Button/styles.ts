@@ -77,7 +77,7 @@ export const StyledButton = styled.button<ButtonProps>`
         }
       `
       : `
-        border-color: ${props.theme.colors.gray[800]};
+        border-color: ${props.theme.colors?.gray[800]};
         background: ${darken(0.15, variants[props.variant].bg)}
       `
   }}
@@ -87,6 +87,6 @@ export const StyledButton = styled.button<ButtonProps>`
   }
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.gray[800]};
+    border-color: ${({ theme }) => theme.colors?.gray[800]};
   }
 `

@@ -13,6 +13,10 @@ export default defineConfig({
       exclude: [
         '.storybook',
         'src/fetchs',
+        'src/**/**.stories.tsx',
+        'src/assets',
+        'src/@types',
+        'src/**/global.ts',
       ],
     },
   },
