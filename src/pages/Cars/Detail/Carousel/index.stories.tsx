@@ -1,6 +1,6 @@
 import { Carousel, CarouselProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
-import { car } from '..'
+import { car } from '../../../../mocks/car'
 
 export default {
   title: 'Components/Car/Carousel',

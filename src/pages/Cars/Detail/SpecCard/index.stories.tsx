@@ -1,13 +1,14 @@
 import { SpecCard, SpecCardProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
-import { car } from '..'
+import { car } from '../../../../mocks/car'
+
+const spec = car.specifications[0]
 
 export default {
   title: 'Components/Car/SpecCard',
   component: SpecCard,
   args: {
-    image: car.specifications[0].img,
-    text: car.specifications[0].text
+    specification: spec
   },
   decorators: [
     Story => (
