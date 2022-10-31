@@ -48,7 +48,7 @@ const SignIn: React.FC = () => {
     } catch (error) {
       // do nothing
     }
-  } 
+  }
 
   return (
     <Layout
@@ -83,7 +83,7 @@ const SignIn: React.FC = () => {
               helperText={errors.password?.message}
             />
 
-            <Link to='/account/password/forgot' >
+            <Link to='/account/password/forgot' data-testid='forgotPasswordLink' >
               Esqueci minha senha
             </Link>
 

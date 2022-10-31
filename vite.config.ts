@@ -7,7 +7,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
-    include: ['**/*.spec.tsx'],
     coverage: {
       all: true,
       exclude: [
@@ -16,7 +15,10 @@ export default defineConfig({
         'src/**/**.stories.tsx',
         'src/assets',
         'src/@types',
+        '**/*.spec.tsx',
         'src/**/global.ts',
+        '**/*.config.ts',
+        'src/services/api.ts',
       ],
     },
   },
